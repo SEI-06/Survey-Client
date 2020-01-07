@@ -46,6 +46,7 @@ const onChangePasswordFailure = () => {
 }
 
 const onSignOutSuccess = () => {
+  $('.v').hide()
   onSuccess('You successfully signed out.')
   // below, the store no longer knows who we are. delete the token.
   store.user = {}
@@ -57,6 +58,15 @@ const onSignOutFailure = () => {
   onFailure('Uh oh... something went wrong! Try again.')
 }
 
+const accountOptionsSuccess = () => {
+  $('.v').hide()
+  $('.user-settings').show()
+}
+
+const accountOptionsFailure = () => {
+
+}
+
 module.exports = {
   onSignUpSuccess,
   onSignUpFailure,
@@ -65,5 +75,7 @@ module.exports = {
   onChangePasswordSuccess,
   onChangePasswordFailure,
   onSignOutSuccess,
-  onSignOutFailure
+  onSignOutFailure,
+  accountOptionsSuccess,
+  accountOptionsFailure
 }

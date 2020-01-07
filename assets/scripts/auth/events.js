@@ -37,6 +37,10 @@ const onChangePassword = event => {
     .catch(ui.onChangePasswordFailure)
 }
 
+const onShowAccountOptions = event => {
+  event.preventDefault()
+  ui.accountOptionsSuccess()
+}
 const onSignOut = event => {
   event.preventDefault()
 
@@ -48,8 +52,9 @@ const onSignOut = event => {
 const addHandlers = event => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
+  $('#show-account-options').on('click', onShowAccountOptions)
   $('#change-password').on('submit', onChangePassword)
-  $('#sign-out').on('submit', onSignOut)
+  $('#sign-out').on('click', onSignOut)
 }
 
 module.exports = {

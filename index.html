@@ -15,7 +15,7 @@
 
 <body>
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light after-auth">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="#">Project Name</a>
 
@@ -64,9 +64,10 @@
 </section>
 
 <section class="after-auth">
+  <button id="get-questions">Get Questions</button>
   <section class="survey-list v"> </section>
   <section class="survey-view v"> </section>
-  <button id="get-questions">Get Questions</button>
+
   <div id="result-message"></div>
   <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#questionModal">Create New Question</button>
       <br>
@@ -82,7 +83,17 @@
           </div>
         </div>
       </div>
+
+      <section class='user-settings v'>
+ <form id="change-password">
+   <input type="text" name="passwords[old]" placeholder="Old Password">
+   <input type="text" name="passwords[new]" placeholder="New Password">
+   <button class="btn btn-primary"> Update </button>
+ </form>
+</section>
   </section>
+
+  <div id='user-message'> </div>
 </body>
 
 </html>
