@@ -13,13 +13,13 @@ const onCreateQuestionSuccess = () => {
 const onCreateQuestionFailure = () => {
   $('#questionModal-form').get(0).reset()
 }
-// const questionsTemplate = require('../templates/question-listing.handlebars')
+const questionsTemplate = require('../templates/question-listing.handlebars')
 // const question-expand.handlebars
 
 const onGetQuestionsSuccess = data => {
   console.log(data)
-  // const questionsHtml = questionsTemplate({ questions: data.questions })
-  $('result-message').html(data)
+  const questionsHtml = questionsTemplate({ questions: data.questions })
+  $('#result-message').html(questionsHtml)
 }
 const onGetQuestionsFailure = data => {
   console.error(data)
