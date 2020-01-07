@@ -1,0 +1,11 @@
+{{#each questions as |question|}}
+  {{log question}}
+  <section data-id="{{question.id}}" class ='survey-list'>
+      <h6> {{question}} </h6>
+    <h3>
+      {{question.date}}
+    </h3>
+  <button data-id="{{question.id}}" class="btn btn-danger read"> See Results </button>
+  </section>
+
+{{/each}}
