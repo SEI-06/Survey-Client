@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Added html for Modal to create question
 'use strict'
 
 const api = require('./api')
@@ -19,16 +15,6 @@ const onCreateQuestion = event => {
     .catch(ui.onCreateQuestionFailure)
 }
 
-const addHandlers = event => {
-  $('#questionModal').on('submit', onCreateQuestion)
-}
-
-<<<<<<< HEAD
-=======
-const api = require('./api')
-const getFormFields = require('../../../lib/get-form-fields')
-const ui = require('./ui')
-
 const onGetQuestions = event => {
   event.preventDefault()
   api.getQuestions()
@@ -38,10 +24,9 @@ const onGetQuestions = event => {
 
 const addHandlers = event => {
   $('#get-questions').on('click', onGetQuestions)
+  $('#questionModal').on('submit', onCreateQuestion)
 }
->>>>>>> Added get all questions api.js events.js ui.js
-=======
->>>>>>> Added html for Modal to create question
+
 module.exports = {
   addHandlers
 }
