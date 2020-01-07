@@ -1,0 +1,11 @@
+{{#each responses as |response|}}
+  {{log response}}
+  <section data-id="{{response.id}}" class ='survey-list'>
+      <h6> {{response}} </h6>
+    <h3>
+      {{response.date}}
+    </h3>
+  <button data-id="{{response.id}}" class="btn btn-danger read"> expand </button>
+  </section>
+
+{{/each}}

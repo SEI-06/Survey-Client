@@ -1,0 +1,14 @@
+  {{log response.id}}
+  <section data-id="{{response.id}}" class ='survey-view'>
+      {{#each choices as |choice|}}
+
+    <h6>Choice:</h6>
+    <h3> {{choice}} </h3>
+    <h6>Votes:</h6>
+    <h3>
+     {{ reponse.choice.user.legnth}}
+    </h3>
+    {{!-- {{include a poll/ bar graph?}} --}}
+
+  <button data-id="{{response.id}}" class="btn btn-danger delete"> DELETE </button>
+  </section>
