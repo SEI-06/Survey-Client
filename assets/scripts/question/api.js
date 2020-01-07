@@ -23,7 +23,20 @@ const getQuestions = () => {
     }
   })
 }
+
+const updateQuestion = formData => {
+  return $.ajax({
+    url: config.apiUrl + '/questions/' + formData.question.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    data: formData
+  })
+}
+
 module.exports = {
   getQuestions,
-  createQuestion
+  createQuestion,
+  updateQuestion
 }
