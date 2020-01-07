@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use strict'
 
 const onCreateQuestionSuccess = () => {
@@ -16,4 +17,20 @@ const onCreateQuestionFailure = () => {
 
 module.exports = {
   onCreateQuestionSuccess
+=======
+// const questionsTemplate = require('../templates/question-listing.handlebars')
+// const question-expand.handlebars
+
+const onGetQuestionsSuccess = data => {
+  console.log(data)
+  // const questionsHtml = questionsTemplate({ questions: data.questions })
+  $('result-message').html(data)
+}
+const onGetQuestionsFailure = data => {
+  console.error(data)
+}
+module.exports = {
+  onGetQuestionsSuccess,
+  onGetQuestionsFailure
+>>>>>>> Added get all questions api.js events.js ui.js
 }
