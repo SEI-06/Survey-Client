@@ -22,9 +22,20 @@ const onGetQuestions = event => {
     .catch(ui.onGetQuestionsFailure)
 }
 
+const onUpdateQuestions = event => {
+  event.preventDefault()
+  const form = event.target
+  const questionData = getFormFields(form)
+
+  api.updateQuestion(questionData)
+    .then(ui.updateQuestionSuccess)
+    .catch(ui.updateQuestionFailure)
+}
+
 const addHandlers = event => {
   $('#get-questions').on('click', onGetQuestions)
   $('#questionModal').on('submit', onCreateQuestion)
+  $('#update-question').on('submit', onUpdateQuestions)
 }
 
 module.exports = {

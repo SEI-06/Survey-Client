@@ -25,9 +25,16 @@ const onGetQuestionsFailure = data => {
   console.error(data)
 }
 
+const updateQuestionSuccess = data => {
+  $('.update-delete').text('You successfuly updated one of your questions!')
+  $('form').trigger('reset')
+  $('.update-delete').fadeIn().fadeOut(1500)
+}
+
 module.exports = {
   onCreateQuestionSuccess,
   onCreateQuestionFailure,
   onGetQuestionsSuccess,
-  onGetQuestionsFailure
+  onGetQuestionsFailure,
+  updateQuestionSuccess
 }
