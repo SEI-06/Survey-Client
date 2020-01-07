@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Added html for Modal to create question
 'use strict'
 
 const onCreateQuestionSuccess = () => {
@@ -11,6 +14,7 @@ const onCreateQuestionSuccess = () => {
   }, 3000)
 }
 
+<<<<<<< HEAD
 const onCreateQuestionFailure = () => {
   $('#questionModal-form').get(0).reset()
 }
@@ -33,4 +37,12 @@ module.exports = {
   onGetQuestionsSuccess,
   onGetQuestionsFailure
 >>>>>>> Added get all questions api.js events.js ui.js
+=======
+const onCreateSnowboardFailure = () => {
+  $('#snowboardModal-form').get(0).reset()
+}
+
+module.exports = {
+  onCreateSnowboardSuccess
+>>>>>>> Added html for Modal to create question
 }

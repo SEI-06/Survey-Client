@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Added html for Modal to create question
 'use strict'
 
 const config = require('../config')
@@ -17,6 +20,7 @@ const createQuestion = formData => {
 
 module.exports = {
   createQuestion
+<<<<<<< HEAD
 =======
 const config = require('../config')
 const store = require('../store')
@@ -33,4 +37,6 @@ const getQuestions = () => {
 module.exports = {
   getQuestions
 >>>>>>> Added get all questions api.js events.js ui.js
+=======
+>>>>>>> Added html for Modal to create question
 }
