@@ -55,6 +55,7 @@ const onSignOutSuccess = () => {
   store.user = {}
   $('.before-auth').show()
   $('.after-auth').hide()
+  $('.question-box').html('')
 }
 
 const onSignOutFailure = () => {
