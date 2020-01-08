@@ -19,7 +19,6 @@ const onCreateQuestionFailure = () => {
 }
 
 const onGetQuestionsSuccess = data => {
-  // console.log(data)
   const questionsHtml = questionsTemplate({ questions: data.questions })
   $('#result-message').html(questionsHtml)
 }
@@ -62,10 +61,10 @@ const onSelectSurveySuccess = data => {
       <h6>Title:</h6>
       ${data.question.title} </br>
       <h6>Choices:</h6>
-      <input type="radio" name="choice" value="1" checked> ${data.question.choice1}</br>
-      <input type="radio" name="choice" value="2"> ${data.question.choice2}</br>
-      <input type="radio" name="choice" value="3"> ${data.question.choice3}</br>
-      <input type="radio" name="choice" value="4"> ${data.question.choice4}</br>
+      <input type="radio" name="question[choice]" value="1" checked> ${data.question.choice1}</br>
+      <input type="radio" name="question[choice]" value="2"> ${data.question.choice2}</br>
+      <input type="radio" name="question[choice]" value="3"> ${data.question.choice3}</br>
+      <input type="radio" name="question[choice]" value="4"> ${data.question.choice4}</br>
       <button class="survey-submit-btn"> submit </button>
       <pre id="log"></pre>
       </form>

@@ -4,6 +4,7 @@ const api = require('./api')
 const ui = require('./ui')
 const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
+const responseApi = require('../response/api')
 
 const onCreateQuestion = event => {
   event.preventDefault()
@@ -70,6 +71,7 @@ const onTakeSurvey = event => {
 
 const onSelectSurvey = event => {
   const questionId = $(event.target).data('id')
+  store.responseQId = questionId
   api.getOneQuestion(questionId)
     .then(ui.onSelectSurveySuccess)
     .catch(console.error)
@@ -78,12 +80,23 @@ const onSelectSurvey = event => {
 const onSubmitSurvey = event => {
   event.preventDefault()
   const form = event.target
+  console.log('event', event)
   const formData = getFormFields(form)
-  console.log(formData.choice) // use it for RESPONSE
+  const questionId = store.responseQId
+  console.log(formData.question.choice)
+  const choiceId = formData.question.choice
+  const userId = store.user._id
+  console.log('question id', questionId) // use it for RESPONSE
   api.getQuestions()
     .then(ui.onSubmitSurveySuccess)
     .catch(console.error)
+    // make a response CREATE api call
+    // pass in response choice number to api call for choice: Number
+    // pass in questionId
+  responseApi.createResponse(userId, choiceId, questionId)
+    .then(console.log)
 }
+
 const addHandlers = event => {
   $('#get-questions').on('click', onGetQuestions)
   $('#questionModal').on('submit', onCreateQuestion)
