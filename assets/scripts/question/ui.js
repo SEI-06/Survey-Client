@@ -54,6 +54,7 @@ const updateQuestionSuccess = data => {
 const onTakeSurveySuccess = data => {
   const surveyHtml = surveysTemplate({ questions: data.questions })
   $('#result-message').html(surveyHtml)
+  $('#result-message').show()
 }
 
 const onSelectSurveySuccess = data => {
