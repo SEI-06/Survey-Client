@@ -23,12 +23,12 @@ const onGetQuestions = event => {
     .catch(ui.onGetQuestionsFailure)
 }
 
-// const onGetOneQuestion = events => {
-//   const questionId = $(event.target).data('id')
-//   api.getOneQuestion(questionId)
-//     .then(console.log)
-//     .catch(console.error)
-// }
+const onGetOneQuestion = events => {
+  const questionId = $(event.target).data('id')
+  api.getOneQuestion(questionId)
+    .then(ui.onGetQuestionSuccess)
+    .catch(console.error)
+}
 
 const onShowUpdateQuestion = event => {
   // store question ID and show update form
@@ -68,8 +68,7 @@ const addHandlers = event => {
   $('.question-box').on('click', '.question-update-btn', onShowUpdateQuestion)
   $('#update-question').on('submit', onUpdateQuestions)
   $('.question-box').on('click', '.question-delete-btn', onDeleteQuestion)
-  // event listener for SHOW action: '.get-question-btn' to be located in question-listing handlebar
-  // $('.question-box').on('click', '.get-question-btn', onGetOneQuestion)
+  $('.question-box').on('click', '.get-question-btn', onGetOneQuestion)
 }
 
 module.exports = {

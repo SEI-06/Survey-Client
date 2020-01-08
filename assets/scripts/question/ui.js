@@ -1,7 +1,7 @@
 'use strict'
 const store = require('../store')
-
-$('#update-question').hide()
+const questionsTemplate = require('../templates/question-listing.handlebars')
+// const question-expand.handlebars
 
 const onCreateQuestionSuccess = () => {
   $('#questionModal-header').text('Successfully Created A New Question!')
@@ -16,8 +16,6 @@ const onCreateQuestionSuccess = () => {
 const onCreateQuestionFailure = () => {
   $('#questionModal-form').get(0).reset()
 }
-const questionsTemplate = require('../templates/question-listing.handlebars')
-// const question-expand.handlebars
 
 const onGetQuestionsSuccess = data => {
   // console.log(data)
@@ -29,11 +27,19 @@ const onGetQuestionsFailure = data => {
   console.error(data)
 }
 
-// const onGetQuestionSuccess = data => {
-//   $('#result-message').html('')
-//   const questionsHtml = questionsTemplate({ question: data.question })
-//   $('#result-message').html(questionsHtml)
-// }
+const onGetQuestionSuccess = data => {
+  $('#result-message').html(`
+    <h6>Title:</h6>
+    ${data.question.title} </br>
+    <h6>Choices:</h6>
+    ${data.question.choice1}</br>
+    ${data.question.choice2}</br>
+    ${data.question.choice3}</br>
+    ${data.question.choice4}</br>
+    <h6>User:</h6>
+    ${data.question.owner.email}
+  `)
+}
 
 const updateQuestionSuccess = data => {
   // $('.update-delete').text('You successfuly updated one of your questions!')
@@ -49,6 +55,6 @@ module.exports = {
   onCreateQuestionFailure,
   onGetQuestionsSuccess,
   onGetQuestionsFailure,
-  // onGetQuestionSuccess,
+  onGetQuestionSuccess,
   updateQuestionSuccess
 }
