@@ -80,13 +80,13 @@ const onSelectSurvey = event => {
 const onSubmitSurvey = event => {
   event.preventDefault()
   const form = event.target
-  console.log('event', event)
+  // console.log('event', event)
   const formData = getFormFields(form)
   const questionId = store.responseQId
-  console.log(formData.question.choice)
+  // console.log(formData.question.choice)
   const choiceId = formData.question.choice
   const userId = store.user._id
-  console.log('question id', questionId) // use it for RESPONSE
+  // console.log('question id', questionId) // use it for RESPONSE
   api.getQuestions()
     .then(ui.onSubmitSurveySuccess)
     .catch(console.error)
@@ -94,7 +94,15 @@ const onSubmitSurvey = event => {
     // pass in response choice number to api call for choice: Number
     // pass in questionId
   responseApi.createResponse(userId, choiceId, questionId)
-    .then(console.log)
+    .then(questionId)
+    // .then(data => {
+    //   console.log(data.response)
+    //   return api.updateQuestion2(data.response, questionId)
+    // }
+    // (data) => {
+    //   api.updateQuestion(data)
+    // }
+  // )
 }
 
 const addHandlers = event => {

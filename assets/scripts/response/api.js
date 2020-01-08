@@ -13,7 +13,8 @@ const createResponse = (userId, choiceId, questionId) => {
     data: {
       'response': {
         'owner': userId,
-        'choice': choiceId
+        'choice': choiceId,
+        'questionOwner': questionId
       }
     }
   })
@@ -40,15 +41,15 @@ const getResponses = () => {
 //   })
 // }
 //
-// const deleteResponse = responseId => {
-//   return $.ajax({
-//     url: config.apiUrl + '/responses/' + responseId,
-//     method: 'DELETE',
-//     headers: {
-//       Authorization: `Token token=${store.user.token}`
-//     }
-//   })
-// }
+const deleteResponse = responseId => {
+  return $.ajax({
+    url: config.apiUrl + '/responses/' + responseId,
+    method: 'DELETE',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    }
+  })
+}
 //
 // const getOneResponse = responseId => {
 //   return $.ajax({
@@ -63,7 +64,7 @@ const getResponses = () => {
 module.exports = {
   getResponses,
   // getOneResponse,
-  createResponse
+  createResponse,
   // updateResponse,
-  // deleteResponse
+  deleteResponse
 }
