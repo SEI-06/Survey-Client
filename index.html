@@ -64,17 +64,17 @@
 </section>
 
 <section class="after-auth">
-  <button id="get-questions">Get Questions</button>
+  <button id="get-questions" class="btn btn-dark">Get Surveys</button>
   <section class="survey-list v"> </section>
   <section class="survey-view v"> </section>
 
-  <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#questionModal">Create New Question</button>
+  <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#questionModal">Create New Survey</button>
       <br>
       <div class="modal fade question-modal" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="questionModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="questionModal-header">Create New Question</h5>
+              <h5 class="modal-title" id="questionModal-header">Create New Survey</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -83,14 +83,19 @@
             <div class="modal-body">
               <form id="questionModal-form">
                 <div class="form-group">
+                  <p>Survey Title</p>
                   <input type="text" class="form-control" id="title" name="question[title]" placeholder="title">
                   <br>
+                  <p>Answer One</p>
                   <input type="text" class="form-control" id="choice-1" name="question[choice1]" placeholder="example">
                   <br>
+                  <p>Answer Two</p>
                   <input type="text" class="form-control" id="choice-2" name="question[choice2]" placeholder="example">
                   <br>
+                  <p>Answer Three</p>
                   <input type="text" class="form-control" id="choice-3" name="question[choice3]" placeholder="example">
                   <br>
+                  <p>Answer Four</p>
                   <input type="text" class="form-control" id="choice-4" name="question[choice4]" placeholder="example">
                 </div>
                 <div class="modal-footer">

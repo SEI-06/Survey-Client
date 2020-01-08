@@ -21,6 +21,7 @@ const onCreateQuestionFailure = () => {
 const onGetQuestionsSuccess = data => {
   const questionsHtml = questionsTemplate({ questions: data.questions })
   $('#result-message').html(questionsHtml)
+  $('#result-message').show()
 }
 
 const onGetQuestionsFailure = data => {
