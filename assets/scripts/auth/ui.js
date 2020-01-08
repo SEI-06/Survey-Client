@@ -7,6 +7,7 @@ const onSuccess = message => {
     .removeClass('failure')
     .addClass('success')
     .text(message)
+  $('#user-message').fadeIn().fadeOut(1500)
   $('form').trigger('reset')
 }
 
@@ -15,6 +16,7 @@ const onFailure = message => {
     .removeClass('success')
     .addClass('failure')
     .text(message)
+  $('#user-message').fadeIn().fadeOut(1500)
   $('form').trigger('reset')
 }
 
