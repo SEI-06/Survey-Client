@@ -2,6 +2,7 @@
 const store = require('../store')
 const questionsTemplate = require('../templates/question-listing.handlebars')
 // const question-expand.handlebars
+const surveysTemplate = require('../templates/survey-listing.handlebars')
 
 const onCreateQuestionSuccess = () => {
   $('#questionModal-header').text('Successfully Created A New Question!')
@@ -50,11 +51,41 @@ const updateQuestionSuccess = data => {
   store.updateQuestionId = ''
 }
 
+const onTakeSurveySuccess = data => {
+  const surveyHtml = surveysTemplate({ questions: data.questions })
+  $('#result-message').html(surveyHtml)
+}
+
+const onSelectSurveySuccess = data => {
+  $('#result-message').html(`
+    <form>
+      <h6>Title:</h6>
+      ${data.question.title} </br>
+      <h6>Choices:</h6>
+      <input type="radio" name="choice" value="1" checked> ${data.question.choice1}</br>
+      <input type="radio" name="choice" value="2"> ${data.question.choice2}</br>
+      <input type="radio" name="choice" value="3"> ${data.question.choice3}</br>
+      <input type="radio" name="choice" value="4"> ${data.question.choice4}</br>
+      <button class="survey-submit-btn"> submit </button>
+      <pre id="log"></pre>
+      </form>
+    `)
+}
+const onSubmitSurveySuccess = data => {
+  const surveyHtml = surveysTemplate({ questions: data.questions })
+  $('#result-message').html(surveyHtml)
+  $('.survey-action-message').html('Survey Suibmitted Successfully')
+    .fadeIn().fadeOut(1500)
+}
+
 module.exports = {
   onCreateQuestionSuccess,
   onCreateQuestionFailure,
   onGetQuestionsSuccess,
   onGetQuestionsFailure,
   onGetQuestionSuccess,
-  updateQuestionSuccess
+  updateQuestionSuccess,
+  onTakeSurveySuccess,
+  onSelectSurveySuccess,
+  onSubmitSurveySuccess
 }

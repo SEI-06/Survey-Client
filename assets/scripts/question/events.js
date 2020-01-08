@@ -62,6 +62,28 @@ const onDeleteQuestion = event => {
     .catch(ui.onDeleteQuestionFailure)
 }
 
+const onTakeSurvey = event => {
+  api.getQuestions()
+    .then(ui.onTakeSurveySuccess)
+    .catch(ui.onTakeSurveyFailure)
+}
+
+const onSelectSurvey = event => {
+  const questionId = $(event.target).data('id')
+  api.getOneQuestion(questionId)
+    .then(ui.onSelectSurveySuccess)
+    .catch(console.error)
+}
+
+const onSubmitSurvey = event => {
+  event.preventDefault()
+  const form = event.target
+  const formData = getFormFields(form)
+  console.log(formData.choice) // use it for RESPONSE
+  api.getQuestions()
+    .then(ui.onSubmitSurveySuccess)
+    .catch(console.error)
+}
 const addHandlers = event => {
   $('#get-questions').on('click', onGetQuestions)
   $('#questionModal').on('submit', onCreateQuestion)
@@ -69,6 +91,9 @@ const addHandlers = event => {
   $('#update-question').on('submit', onUpdateQuestions)
   $('.question-box').on('click', '.question-delete-btn', onDeleteQuestion)
   $('.question-box').on('click', '.get-question-btn', onGetOneQuestion)
+  $('.take-survey').on('click', onTakeSurvey)
+  $('.question-box').on('click', '.take-survey-btn', onSelectSurvey)
+  $('#result-message').on('submit', onSubmitSurvey)
 }
 
 module.exports = {
