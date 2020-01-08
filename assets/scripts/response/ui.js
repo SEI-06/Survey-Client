@@ -7,10 +7,15 @@ const onindexResultsSuccess = (data) => {
   let count2 = 0
   let count3 = 0
   let count4 = 0
+  const choiceTitle = []
   // console.log('D', data.responses[5].questionOwner._id)
   for (let i = 0; i < data.responses.length; i++) {
     if (questionId === data.responses[i].questionOwner._id) {
       answerChoices.push(data.responses[i].choice)
+      choiceTitle.push(data.responses[i].questionOwner.choice1)
+      choiceTitle.push(data.responses[i].questionOwner.choice2)
+      choiceTitle.push(data.responses[i].questionOwner.choice3)
+      choiceTitle.push(data.responses[i].questionOwner.choice4)
     }
   }
   for (let i = 0; i < answerChoices.length; i++) {
@@ -25,10 +30,10 @@ const onindexResultsSuccess = (data) => {
     }
   }
   $('#result-message').html(`
-    1 = ${count1} </br>
-    2 = ${count2} </br>
-    3 = ${count3} </br>
-    4 = ${count4} </br>
+    ${choiceTitle[0]} = ${count1} </br>
+    ${choiceTitle[1]} = ${count2} </br>
+    ${choiceTitle[2]} = ${count3} </br>
+    ${choiceTitle[3]} = ${count4} </br>
     `)
   console.log(count1, count2, count3, count4)
 }
