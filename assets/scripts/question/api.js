@@ -24,9 +24,9 @@ const getQuestions = () => {
   })
 }
 
-const updateQuestion = formData => {
+const updateQuestion = (formData, questionId) => {
   return $.ajax({
-    url: config.apiUrl + '/questions/' + formData.question.id,
+    url: config.apiUrl + '/questions/' + questionId,
     method: 'PATCH',
     headers: {
       Authorization: `Token token=${store.user.token}`
@@ -35,8 +35,30 @@ const updateQuestion = formData => {
   })
 }
 
+const deleteQuestion = questionId => {
+  return $.ajax({
+    url: config.apiUrl + '/questions/' + questionId,
+    method: 'DELETE',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    }
+  })
+}
+
+const getOneQuestion = questionId => {
+  return $.ajax({
+    url: config.apiUrl + '/questions/' + questionId,
+    method: 'GET',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    }
+  })
+}
+
 module.exports = {
   getQuestions,
+  getOneQuestion,
   createQuestion,
-  updateQuestion
+  updateQuestion,
+  deleteQuestion
 }

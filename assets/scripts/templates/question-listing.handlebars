@@ -1,13 +1,19 @@
 {{#each questions as |question|}}
   {{log question}}
-  <section data-id="{{question.id}}" class='survey-list'>
-    <h6> {{question.title}} </h6>
-    <ul>
-      <li>{{question.choice1}}</li>
-      <li>{{question.choice2}}</li>
-      <li>{{question.choice3}}</li>
-      <li>{{question.choice4}}</li>
-    </ul>
-    <button data-id="{{question.id}}" class="btn btn-danger read"> See Results </button>
+  <section data-id="{{question._id}}" class='survey-list'>
+
+      <h6> {{question.title}} </h6>
+        <li>{{question.choice1}}</li>
+        <li>{{question.choice2}}</li>
+        <li>{{question.choice3}}</li>
+        <li>{{question.choice4}}</li>
+        <button data-id="{{question._id}}" class="btn btn-primary read"> See Results </button>
+        <button data-id="{{question._id}}" title="Edit" class="btn btn-primary question-update-btn">
+          Update
+        </button>
+        <button data-id="{{question._id}}" title="Delete" class="btn btn-danger question-delete-btn">
+          Delete
+        </button>
+
   </section>
 {{/each}}

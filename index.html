@@ -68,7 +68,6 @@
   <section class="survey-list v"> </section>
   <section class="survey-view v"> </section>
 
-  <div id="result-message"></div>
   <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#questionModal">Create New Question</button>
       <br>
       <div class="modal fade question-modal" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="questionModal" aria-hidden="true">
@@ -105,8 +104,6 @@
 
     </div>
     <form id="update-question">
-      <label for="question-update-id">Enter an ID</label>
-      <input name="question[id]" id="question-update-id" type="number" placeholder="ID">
       <input name="question[title]" type="text" placeholder="question">
       <input name="question[choice1]" type="text" placeholder="choice1">
       <input name="question[choice2]" type="text" placeholder="choice2">
@@ -115,7 +112,7 @@
       <button class="btn btn-dark">Update a Question</button>
     </form>
   </section>
-
+<div id="result-message" class="question-box"></div>
   <section class='user-settings v'>
 <form id="change-password">
 <input type="text" name="passwords[old]" placeholder="Old Password">
