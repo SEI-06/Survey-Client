@@ -16,7 +16,7 @@
 
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #A9B7C0;" >
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #A9B7C0;">
       <div class="container">
         <a class="navbar-brand app-title">Survey</a>
         <section class="before-auth">
@@ -36,9 +36,9 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Menu
                 </a>
-                <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
                 <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item take-survey">Take Survey</a>
+                  <a id="get-questions" class="dropdown-item">All Surveys</a>
+
                   <a class="dropdown-item my-survey">My Surveys</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" id="show-account-options">Change Password</a>
@@ -52,27 +52,7 @@
     </nav>
   </header>
   <div class="warning-messages"></div>
-  <!-- <section class="before-auth"> -->
-  <!-- <form ID="sign-up">
-    <h4>Sign Up</h4>
-    <input type="email" name="credentials[email]" class="inputs" placeholder="email">
-    <br />
-    <input type="password" name="credentials[password]" class="inputs" placeholder="password">
-    <br />
-    <input type="password" name="credentials[password_confirmation]" class="inputs" placeholder="password">
-    <br />
-    <button class="btn btn-info">Submit</button>
-  </form> -->
-  <!-- <hr>
-  <form ID="sign-in">
-    <h4>Sign In</h4>
-    <input type="email" name="credentials[email]" class="inputs" placeholder="email">
-    <br />
-    <input type="password" name="credentials[password]" class="inputs" placeholder="password">
-    <br />
-    <button class="btn btn-info">Submit</button>
-  </form>
-</section> -->
+  <!-- MODAL --------------------------------------------------------->
   <div class="modal fade sign-up-modal" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -100,9 +80,7 @@
         </div>
       </div>
     </div>
-
   </div>
-
   <div class="modal fade sign-in-modal" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -128,9 +106,10 @@
         </div>
       </div>
     </div>
-
   </div>
+  <!-- MODAL --------------------------------------------------------->
 
+  <!-- USER-SETTINGS --------------------------------------------------------->
   <section class='user-settings v'>
     <form id="change-password">
       <input type="password" name="passwords[old]" placeholder="Old Password" required>
@@ -140,14 +119,12 @@
       <button class="btn btn-info"> Update </button>
     </form>
   </section>
-
   <div id='user-message'> </div>
+  <!-- END USER-SETTINGS --------------------------------------------------------->
 
+  <!-- MAIN PAGE --------------------------------------------------------->
   <section class="after-auth">
-    <button id="get-questions" class="btn btn-dark">Get Surveys</button>
-    <section class="survey-list v"> </section>
-    <section class="survey-view v"> </section>
-
+    <button class="btn btn-dark take-survey">Take Survey</button>
     <button type="button" class="btn btn-dark create-btn" data-toggle="modal" data-target="#questionModal">Create New Survey</button>
     <br>
     <div class="modal fade question-modal" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="questionModal" aria-hidden="true">
@@ -186,8 +163,10 @@
           </div>
         </div>
       </div>
-
     </div>
+    <!-- MAIN PAGE --------------------------------------------------------->
+
+    <!-- UPDATE Q FORM --------------------------------------------------------->
     <form id="update-question" class="update-question">
       <input name="question[title]" type="text" placeholder="question">
       <input name="question[choice1]" type="text" placeholder="choice1">
@@ -196,6 +175,8 @@
       <input name="question[choice4]" type="text" placeholder="choice4">
       <button class="btn btn-dark">Update a Question</button>
     </form>
+    <!-- UPDATE Q FORM --------------------------------------------------------->
+
   </section>
   <div id="result-message" class="question-box"></div>
 </body>
