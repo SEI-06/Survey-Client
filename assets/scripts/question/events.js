@@ -34,12 +34,17 @@ const onShowUpdateQuestion = event => {
   store.updateQuestionId = ''
   const updateQuestionId = $(event.target).data('id')
   store.updateQuestionId = updateQuestionId
-  if (updateQuestionId === store.user._id) {
-    $('#update-question').show()
-  } else {
-    $('.warning-messages').html('You cannot modify other user\'s survey')
-      .fadeIn().fadeOut(1500)
-  }
+  api.getOneQuestion(updateQuestionId)
+    .then(
+      (data) => {
+        if (data.question.owner._id === store.user._id) {
+          $('#update-question').show()
+        } else {
+          $('.warning-messages').html('You cannot modify other user\'s survey')
+            .fadeIn().fadeOut(1500)
+        }
+      })
+    .catch()
 }
 
 const onUpdateQuestions = event => {
