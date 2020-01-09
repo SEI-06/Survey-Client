@@ -45,7 +45,7 @@ const onUpdateQuestions = event => {
   const questionId = store.updateQuestionId
   // pass in question ID to api call
   api.updateQuestion(questionData, questionId)
-    .then(function (data) {
+    .then(function(data) {
       onGetQuestions(event)
     })
     .then(ui.updateQuestionSuccess)
@@ -56,25 +56,26 @@ const onDeleteQuestion = event => {
   const deleteQuestionId = $(event.target).data('id')
   api.getOneQuestion(deleteQuestionId)
     .then(data => {
-      console.log('data is', data)
+      if (data.question.owner._id === store.user._id) {
+        api.deleteQuestion(deleteQuestionId)
+          .then(data => {
+            onGetQuestions(event)
+          })
+          .then(() => {
+            responseApi.getResponses()
+              .then(data => {
+                const response = data.responses
+                for (let i = 0; i < response.length; i++) {
+                  if (!response[i].questionOwner) {
+                    responseApi.deleteResponse(response[i]._id)
+                  }
+                }
+              })
+            // .catch(ui.onDeleteNullResponseFailure)
+          })
+          .catch(ui.onDeleteQuestionFailure)
+      }
     })
-  api.deleteQuestion(deleteQuestionId)
-    .then(data => {
-      onGetQuestions(event)
-    })
-    .then(() => {
-      responseApi.getResponses()
-        .then(data => {
-          const response = data.responses
-          for (let i = 0; i < response.length; i++) {
-            if (!response[i].questionOwner) {
-              responseApi.deleteResponse(response[i]._id)
-            }
-          }
-        })
-        // .catch(ui.onDeleteNullResponseFailure)
-    })
-    .catch(ui.onDeleteQuestionFailure)
 }
 
 const onTakeSurvey = event => {
@@ -104,9 +105,9 @@ const onSubmitSurvey = event => {
   api.getQuestions()
     .then(ui.onSubmitSurveySuccess)
     .catch(console.error)
-    // make a response CREATE api call
-    // pass in response choice number to api call for choice: Number
-    // pass in questionId
+  // make a response CREATE api call
+  // pass in response choice number to api call for choice: Number
+  // pass in questionId
   responseApi.createResponse(userId, choiceId, questionId)
     .then()
     .catch()
