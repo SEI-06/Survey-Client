@@ -26,11 +26,10 @@ const onGetOneQuestion = events => {
   const questionId = $(event.target).data('id')
   api.getOneQuestion(questionId)
     .then(ui.onGetQuestionSuccess)
-    .catch(console.error)
+    .catch()
 }
 
 const onShowUpdateQuestion = event => {
-  // store question ID and show update form
   store.updateQuestionId = ''
   const updateQuestionId = $(event.target).data('id')
   store.updateQuestionId = updateQuestionId
@@ -51,9 +50,7 @@ const onUpdateQuestions = event => {
   event.preventDefault()
   const form = event.target
   const questionData = getFormFields(form)
-  // get stored question ID
   const questionId = store.updateQuestionId
-  // pass in question ID to api call
   api.updateQuestion(questionData, questionId)
     .then(function (data) {
       onGetQuestions(event)
@@ -81,7 +78,6 @@ const onDeleteQuestion = event => {
                   }
                 }
               })
-            // .catch(ui.onDeleteNullResponseFailure)
           })
           .catch()
       } else {
@@ -102,25 +98,19 @@ const onSelectSurvey = event => {
   store.responseQId = questionId
   api.getOneQuestion(questionId)
     .then(ui.onSelectSurveySuccess)
-    .catch(console.error)
+    .catch()
 }
 
 const onSubmitSurvey = event => {
   event.preventDefault()
   const form = event.target
-  // console.log('event', event)
   const formData = getFormFields(form)
   const questionId = store.responseQId
-  // console.log(formData.question.choice)
   const choiceId = formData.question.choice
   const userId = store.user._id
-  // console.log('question id', questionId) // use it for RESPONSE
   api.getQuestions()
     .then(ui.onSubmitSurveySuccess)
-    .catch(console.error)
-  // make a response CREATE api call
-  // pass in response choice number to api call for choice: Number
-  // pass in questionId
+    .catch()
   responseApi.createResponse(userId, choiceId, questionId)
     .then()
     .catch()
