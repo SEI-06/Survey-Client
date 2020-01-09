@@ -43,7 +43,7 @@ const onShowUpdateQuestion = event => {
             .fadeIn().fadeOut(1500)
         }
       })
-    .catch()
+    .catch(ui.onShowUpdateQuestionFailure)
 }
 
 const onUpdateQuestions = event => {
@@ -79,7 +79,7 @@ const onDeleteQuestion = event => {
                 }
               })
           })
-          .catch()
+          .catch(ui.onDeleteQuestionFailure)
       } else {
         $('.warning-messages').html('You do not own this question')
           .fadeIn().fadeOut(1500)
@@ -98,7 +98,7 @@ const onSelectSurvey = event => {
   store.responseQId = questionId
   api.getOneQuestion(questionId)
     .then(ui.onSelectSurveySuccess)
-    .catch()
+    .catch(ui.onSelectSurveyFailure)
 }
 
 const onSubmitSurvey = event => {
@@ -110,10 +110,10 @@ const onSubmitSurvey = event => {
   const userId = store.user._id
   api.getQuestions()
     .then(ui.onSubmitSurveySuccess)
-    .catch()
+    .catch(ui.onSubmitSurveyFailure)
   responseApi.createResponse(userId, choiceId, questionId)
     .then()
-    .catch()
+    .catch(ui.onSubmitSurveyFailure)
 }
 const onMySurvey = events => {
   const userId = store.user._id

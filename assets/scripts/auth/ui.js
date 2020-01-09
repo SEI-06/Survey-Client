@@ -88,7 +88,7 @@ const accountOptionsSuccess = () => {
 }
 
 const accountOptionsFailure = () => {
-
+  onFailure('Uh oh... something went wrong! Try again.')
 }
 
 module.exports = {

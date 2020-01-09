@@ -35,6 +35,7 @@ const onGetQuestionsSuccess = data => {
 }
 
 const onGetQuestionsFailure = data => {
+  $('#result-message').text('Something went wrong')
   console.error(data)
 }
 
@@ -86,11 +87,20 @@ const onSelectSurveySuccess = data => {
     `)
   $('.user-settings').hide()
 }
+
+const onSelectSurveyFailure = () => {
+  $('#result-message').text('Something went wrong')
+}
+
 const onSubmitSurveySuccess = data => {
   const surveyHtml = surveysTemplate({ questions: data.questions })
   $('#result-message').html(surveyHtml)
   $('.survey-action-message').html('Survey Submitted Successfully')
     .fadeIn().fadeOut(1500)
+}
+
+const onSubmitSurveyFailure = () => {
+  $('#result-message').text('Something went wrong')
 }
 
 const getMySurveySuccess = data => {
@@ -107,6 +117,10 @@ const onDeleteQuestionFailure = data => {
   $('#result-message').html('FAILED')
 }
 
+const onShowUpdateQuestionFailure = () => {
+  $('#result-message').text('Something went wrong')
+}
+
 module.exports = {
   onCreateQuestionSuccess,
   onCreateQuestionFailure,
@@ -116,8 +130,11 @@ module.exports = {
   updateQuestionSuccess,
   onTakeSurveySuccess,
   onSelectSurveySuccess,
+  onSelectSurveyFailure,
   onSubmitSurveySuccess,
+  onSubmitSurveyFailure,
   getMySurveySuccess,
   getMySurveyFailure,
-  onDeleteQuestionFailure
+  onDeleteQuestionFailure,
+  onShowUpdateQuestionFailure
 }
