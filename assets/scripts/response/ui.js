@@ -9,7 +9,6 @@ const onIndexResultsSuccess = (data) => {
   let count4 = 0
   const choiceStr = []
   const response = data.responses
-  // console.log('D', response)
   for (let i = 0; i < response.length; i++) {
     if (response[i].questionOwner) {
       if (questionId === response[i].questionOwner._id) {
@@ -42,7 +41,6 @@ const onIndexResultsSuccess = (data) => {
     ${choiceStr[3]} = ${count4} </br>
     `)
   }
-  console.log(count1, count2, count3, count4)
 }
 
 const onShowAllResSuccess = (data) => {
