@@ -45,7 +45,7 @@ const onUpdateQuestions = event => {
   const questionId = store.updateQuestionId
   // pass in question ID to api call
   api.updateQuestion(questionData, questionId)
-    .then(function(data) {
+    .then(function (data) {
       onGetQuestions(event)
     })
     .then(ui.updateQuestionSuccess)
@@ -74,6 +74,8 @@ const onDeleteQuestion = event => {
             // .catch(ui.onDeleteNullResponseFailure)
           })
           .catch(ui.onDeleteQuestionFailure)
+      } else {
+        $('#result-message').html('You do not own this question')
       }
     })
 }

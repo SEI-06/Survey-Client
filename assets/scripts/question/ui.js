@@ -99,6 +99,7 @@ const getMySurveyFailure = () => {
 const onDeleteQuestionFailure = data => {
   $('#result-message').html('FAILED')
 }
+
 module.exports = {
   onCreateQuestionSuccess,
   onCreateQuestionFailure,
