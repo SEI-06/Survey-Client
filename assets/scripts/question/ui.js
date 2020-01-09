@@ -13,7 +13,7 @@ const onCreateQuestionSuccess = () => {
     $('#questionModal-header').text('Create New Survey')
     $('#questionModal-header').css('background-color', 'white')
   }, 3000)
-  $('#questionModal').modal('hide')
+  // $('#questionModal').modal('hide')
 }
 
 const onCreateQuestionFailure = () => {
