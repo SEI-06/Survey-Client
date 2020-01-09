@@ -54,6 +54,10 @@ const onUpdateQuestions = event => {
 
 const onDeleteQuestion = event => {
   const deleteQuestionId = $(event.target).data('id')
+  api.getOneQuestion(deleteQuestionId)
+    .then(data => {
+      console.log('data is', data)
+    })
   api.deleteQuestion(deleteQuestionId)
     .then(data => {
       onGetQuestions(event)
