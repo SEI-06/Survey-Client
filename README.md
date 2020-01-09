@@ -13,7 +13,7 @@ a survey, a user can choose out of the available surveys. Each survey is multipl
 choice, so the user can select one answer, and hit submit, thus making the results
 viewable.
 
-[Try TBD Out!](https://sei-06.github.io/Survey-Client/)
+[Try Poll-ar Bear Out!](https://sei-06.github.io/Survey-Client/)
 
 ![image](Something)
 
