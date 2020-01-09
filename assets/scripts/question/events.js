@@ -11,9 +11,7 @@ const onCreateQuestion = event => {
   const form = event.target
   const formData = getFormFields(form)
   api.createQuestion(formData)
-    .then((res) => {
-      ui.onCreateQuestionSuccess()
-    })
+    .then(ui.onCreateQuestionSuccess)
     .catch(ui.onCreateQuestionFailure)
 }
 
@@ -64,14 +62,13 @@ const onDeleteQuestion = event => {
       responseApi.getResponses()
         .then(data => {
           const response = data.responses
-          // const responseId = []
-          // responseId += data.responses[i]._id
           for (let i = 0; i < response.length; i++) {
             if (!response[i].questionOwner) {
               responseApi.deleteResponse(response[i]._id)
             }
           }
         })
+        // .catch(ui.onDeleteNullResponseFailure)
     })
     .catch(ui.onDeleteQuestionFailure)
 }
@@ -107,17 +104,14 @@ const onSubmitSurvey = event => {
     // pass in response choice number to api call for choice: Number
     // pass in questionId
   responseApi.createResponse(userId, choiceId, questionId)
-    .then(questionId)
-    // .then(data => {
-    //   console.log(data.response)
-    //   return api.updateQuestion2(data.response, questionId)
-    // }
-    // (data) => {
-    //   api.updateQuestion(data)
-    // }
-  // )
+    .then()
+    .catch()
 }
 
+const onCreateQ = event => {
+  event.preventDefault()
+  $('#questionModal-form').trigger('reset')
+}
 const addHandlers = event => {
   $('#get-questions').on('click', onGetQuestions)
   $('#questionModal').on('submit', onCreateQuestion)
@@ -128,6 +122,7 @@ const addHandlers = event => {
   $('.take-survey').on('click', onTakeSurvey)
   $('.question-box').on('click', '.take-survey-btn', onSelectSurvey)
   $('#result-message').on('submit', onSubmitSurvey)
+  $('.create-btn').on('click', onCreateQ)
 }
 
 module.exports = {
