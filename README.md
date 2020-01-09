@@ -62,4 +62,4 @@ Some of the more challenging aspects were writing the structure needed to get a 
 
 #### Wireframe
 
-![SurveySPAWireframe](https://imgur.com/7ESgDl2)
+![SurveySPAWireframe](https://i.imgur.com/7ESgDl2.jpg)
