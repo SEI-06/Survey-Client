@@ -96,6 +96,9 @@ const getMySurveyFailure = () => {
   $('#result-message').text('Something went wrong')
 }
 
+const onDeleteQuestionFailure = data => {
+  $('#result-message').html('FAILED')
+}
 module.exports = {
   onCreateQuestionSuccess,
   onCreateQuestionFailure,
@@ -107,5 +110,6 @@ module.exports = {
   onSelectSurveySuccess,
   onSubmitSurveySuccess,
   getMySurveySuccess,
-  getMySurveyFailure
+  getMySurveyFailure,
+  onDeleteQuestionFailure
 }
