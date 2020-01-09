@@ -55,10 +55,21 @@ const getOneQuestion = questionId => {
   })
 }
 
+const getMySurvey = myId => {
+  return $.ajax({
+    url: config.apiUrl + '/mysurvey/' + myId,
+    method: 'GET',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    }
+  })
+}
+
 module.exports = {
   getQuestions,
   getOneQuestion,
   createQuestion,
   updateQuestion,
-  deleteQuestion
+  deleteQuestion,
+  getMySurvey
 }

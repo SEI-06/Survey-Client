@@ -97,6 +97,13 @@ const onSubmitSurvey = event => {
     .then(console.log)
 }
 
+const onMySurvey = events => {
+  const userId = store.user._id
+  api.getMySurvey(userId)
+    .then(ui.getMySurveySuccess)
+    .catch(ui.getMySurveyFailure)
+}
+
 const addHandlers = event => {
   $('#get-questions').on('click', onGetQuestions)
   $('#questionModal').on('submit', onCreateQuestion)
@@ -107,6 +114,7 @@ const addHandlers = event => {
   $('.take-survey').on('click', onTakeSurvey)
   $('.question-box').on('click', '.take-survey-btn', onSelectSurvey)
   $('#result-message').on('submit', onSubmitSurvey)
+  $('.my-survey').on('click', onMySurvey)
 }
 
 module.exports = {

@@ -3,6 +3,7 @@ const store = require('../store')
 const questionsTemplate = require('../templates/question-listing.handlebars')
 // const question-expand.handlebars
 const surveysTemplate = require('../templates/survey-listing.handlebars')
+const mySurveysTemplate = require('../templates/my-survey-listing.handlebars')
 
 const onCreateQuestionSuccess = () => {
   $('#questionModal-header').text('Successfully Created A New Question!')
@@ -77,6 +78,15 @@ const onSubmitSurveySuccess = data => {
     .fadeIn().fadeOut(1500)
 }
 
+const getMySurveySuccess = data => {
+  const mySurveyHtml = mySurveysTemplate({ questions: data.questions })
+  $('#result-message').html(mySurveyHtml)
+}
+
+const getMySurveyFailure = () => {
+  $('#result-message').text('Something went wrong')
+}
+
 module.exports = {
   onCreateQuestionSuccess,
   onCreateQuestionFailure,
@@ -86,5 +96,7 @@ module.exports = {
   updateQuestionSuccess,
   onTakeSurveySuccess,
   onSelectSurveySuccess,
-  onSubmitSurveySuccess
+  onSubmitSurveySuccess,
+  getMySurveySuccess,
+  getMySurveyFailure
 }
