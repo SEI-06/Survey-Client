@@ -59,6 +59,7 @@ const onSignInFailure = () => {
 
 const onChangePasswordSuccess = () => {
   onSuccess('You successfully changed your password.')
+  $('.user-settings').hide()
 }
 
 const onChangePasswordFailure = () => {
@@ -75,6 +76,7 @@ const onSignOutSuccess = () => {
   $('.question-box').html('')
   $('#result-message').hide()
   $('.update-question').hide()
+  $('.user-settings').hide()
 }
 
 const onSignOutFailure = () => {
