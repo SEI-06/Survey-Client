@@ -13,6 +13,8 @@ const onCreateQuestionSuccess = () => {
     $('#questionModal-header').text('Create New Survey')
     $('#questionModal-header').css('background-color', 'white')
   }, 3000)
+  $('#questionModal').modal('hide')
+  $('.user-settings').hide()
 }
 
 const onCreateQuestionFailure = () => {
@@ -29,6 +31,7 @@ const onGetQuestionsSuccess = data => {
   const questionsHtml = questionsTemplate({ questions: data.questions })
   $('#result-message').html(questionsHtml)
   $('#result-message').show()
+  $('.user-settings').hide()
 }
 
 const onGetQuestionsFailure = data => {
@@ -47,6 +50,7 @@ const onGetQuestionSuccess = data => {
     <h6>User:</h6>
     ${data.question.owner.email}
   `)
+  $('.user-settings').hide()
 }
 
 const updateQuestionSuccess = data => {
@@ -56,12 +60,14 @@ const updateQuestionSuccess = data => {
   $('#update-question').hide()
   // delete stored question ID upon success
   store.updateQuestionId = ''
+  $('.user-settings').hide()
 }
 
 const onTakeSurveySuccess = data => {
   const surveyHtml = surveysTemplate({ questions: data.questions })
   $('#result-message').html(surveyHtml)
   $('#result-message').show()
+  $('.user-settings').hide()
 }
 
 const onSelectSurveySuccess = data => {
@@ -78,21 +84,27 @@ const onSelectSurveySuccess = data => {
       <pre id="log"></pre>
       </form>
     `)
+  $('.user-settings').hide()
 }
 const onSubmitSurveySuccess = data => {
   const surveyHtml = surveysTemplate({ questions: data.questions })
   $('#result-message').html(surveyHtml)
-  $('.survey-action-message').html('Survey Suibmitted Successfully')
+  $('.survey-action-message').html('Survey Submitted Successfully')
     .fadeIn().fadeOut(1500)
 }
 
 const getMySurveySuccess = data => {
   const mySurveyHtml = mySurveysTemplate({ questions: data.questions })
   $('#result-message').html(mySurveyHtml)
+  $('.user-settings').hide()
 }
 
 const getMySurveyFailure = () => {
   $('#result-message').text('Something went wrong')
+}
+
+const onDeleteQuestionFailure = data => {
+  $('#result-message').html('FAILED')
 }
 
 module.exports = {
@@ -106,5 +118,6 @@ module.exports = {
   onSelectSurveySuccess,
   onSubmitSurveySuccess,
   getMySurveySuccess,
-  getMySurveyFailure
+  getMySurveyFailure,
+  onDeleteQuestionFailure
 }

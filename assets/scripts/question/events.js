@@ -26,24 +26,31 @@ const onGetOneQuestion = events => {
   const questionId = $(event.target).data('id')
   api.getOneQuestion(questionId)
     .then(ui.onGetQuestionSuccess)
-    .catch(console.error)
+    .catch()
 }
 
 const onShowUpdateQuestion = event => {
-  // store question ID and show update form
   store.updateQuestionId = ''
   const updateQuestionId = $(event.target).data('id')
   store.updateQuestionId = updateQuestionId
-  $('#update-question').show()
+  api.getOneQuestion(updateQuestionId)
+    .then(
+      (data) => {
+        if (data.question.owner._id === store.user._id) {
+          $('#update-question').show()
+        } else {
+          $('.warning-messages').html('You cannot modify other user\'s survey')
+            .fadeIn().fadeOut(1500)
+        }
+      })
+    .catch()
 }
 
 const onUpdateQuestions = event => {
   event.preventDefault()
   const form = event.target
   const questionData = getFormFields(form)
-  // get stored question ID
   const questionId = store.updateQuestionId
-  // pass in question ID to api call
   api.updateQuestion(questionData, questionId)
     .then(function (data) {
       onGetQuestions(event)
@@ -54,23 +61,30 @@ const onUpdateQuestions = event => {
 
 const onDeleteQuestion = event => {
   const deleteQuestionId = $(event.target).data('id')
-  api.deleteQuestion(deleteQuestionId)
+  api.getOneQuestion(deleteQuestionId)
     .then(data => {
-      onGetQuestions(event)
+      if (data.question.owner._id === store.user._id) {
+        api.deleteQuestion(deleteQuestionId)
+          .then(data => {
+            onGetQuestions(event)
+          })
+          .then(() => {
+            responseApi.getResponses()
+              .then(data => {
+                const response = data.responses
+                for (let i = 0; i < response.length; i++) {
+                  if (!response[i].questionOwner) {
+                    responseApi.deleteResponse(response[i]._id)
+                  }
+                }
+              })
+          })
+          .catch()
+      } else {
+        $('.warning-messages').html('You do not own this question')
+          .fadeIn().fadeOut(1500)
+      }
     })
-    .then(() => {
-      responseApi.getResponses()
-        .then(data => {
-          const response = data.responses
-          for (let i = 0; i < response.length; i++) {
-            if (!response[i].questionOwner) {
-              responseApi.deleteResponse(response[i]._id)
-            }
-          }
-        })
-        // .catch(ui.onDeleteNullResponseFailure)
-    })
-    .catch(ui.onDeleteQuestionFailure)
 }
 
 const onTakeSurvey = event => {
@@ -84,25 +98,19 @@ const onSelectSurvey = event => {
   store.responseQId = questionId
   api.getOneQuestion(questionId)
     .then(ui.onSelectSurveySuccess)
-    .catch(console.error)
+    .catch()
 }
 
 const onSubmitSurvey = event => {
   event.preventDefault()
   const form = event.target
-  // console.log('event', event)
   const formData = getFormFields(form)
   const questionId = store.responseQId
-  // console.log(formData.question.choice)
   const choiceId = formData.question.choice
   const userId = store.user._id
-  // console.log('question id', questionId) // use it for RESPONSE
   api.getQuestions()
     .then(ui.onSubmitSurveySuccess)
-    .catch(console.error)
-    // make a response CREATE api call
-    // pass in response choice number to api call for choice: Number
-    // pass in questionId
+    .catch()
   responseApi.createResponse(userId, choiceId, questionId)
     .then()
     .catch()
