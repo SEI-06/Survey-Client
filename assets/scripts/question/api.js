@@ -35,6 +35,17 @@ const updateQuestion = (formData, questionId) => {
   })
 }
 
+const updateQuestion2 = (response, questionId) => {
+  return $.ajax({
+    url: config.apiUrl + '/questions/' + questionId,
+    method: 'PATCH',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    data: response
+  })
+}
+
 const deleteQuestion = questionId => {
   return $.ajax({
     url: config.apiUrl + '/questions/' + questionId,
@@ -71,5 +82,6 @@ module.exports = {
   createQuestion,
   updateQuestion,
   deleteQuestion,
-  getMySurvey
+  getMySurvey,
+  updateQuestion2
 }
