@@ -34,7 +34,12 @@ const onShowUpdateQuestion = event => {
   store.updateQuestionId = ''
   const updateQuestionId = $(event.target).data('id')
   store.updateQuestionId = updateQuestionId
-  $('#update-question').show()
+  if (updateQuestionId === store.user._id) {
+    $('#update-question').show()
+  } else {
+    $('.warning-messages').html('You cannot modify other user\'s survey')
+      .fadeIn().fadeOut(1500)
+  }
 }
 
 const onUpdateQuestions = event => {
@@ -73,9 +78,10 @@ const onDeleteQuestion = event => {
               })
             // .catch(ui.onDeleteNullResponseFailure)
           })
-          .catch(ui.onDeleteQuestionFailure)
+          .catch()
       } else {
-        $('#result-message').html('You do not own this question')
+        $('.warning-messages').html('You do not own this question')
+          .fadeIn().fadeOut(1500)
       }
     })
 }

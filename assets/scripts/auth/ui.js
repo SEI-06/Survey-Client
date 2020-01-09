@@ -26,7 +26,15 @@ const onSignUpSuccess = () => {
 }
 
 const onSignUpFailure = () => {
-  onFailure('Uh oh... something went wrong! Try again.')
+  $('#signUpModal-header').text('Failed to sign up')
+  $('#signUpModal-header').css('background-color', 'red')
+  $('#sign-up').get(0).reset()
+  setTimeout(() => {
+    $('#signUpModal-header').text('Sign Up')
+    $('#signUpModal-header').css('background-color', 'white')
+  }, 3000)
+  // $('#signUpModal').modal('hide')
+  // onFailure('Uh oh... something went wrong! Try again.')
 }
 
 const onSignInSuccess = responseData => {
@@ -39,6 +47,13 @@ const onSignInSuccess = responseData => {
 }
 
 const onSignInFailure = () => {
+  $('#signInModal-header').text('Failed to sign in. Try again.')
+  $('#signInModal-header').css('background-color', 'red')
+  $('#sign-in').get(0).reset()
+  setTimeout(() => {
+    $('#signInModal-header').text('Sign In')
+    $('#signInModal-header').css('background-color', 'white')
+  }, 3000)
   onFailure('Uh oh... something went wrong! Try again.')
 }
 
