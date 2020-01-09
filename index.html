@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Example</title>
+  <title>Survey</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Do not add `link` tags-->
@@ -17,7 +17,17 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand" href="#">Project Name</a>
+      <a class="navbar-brand" href="#">Survey</a>
+    <section class="before-auth">
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#signInModal">Sign In</a>
+        </li>
+      </ul>
+    </section>
 
       <div class="navbar" id="navbarSupportedContent">
         <section class="after-auth">
@@ -42,8 +52,8 @@
   </nav>
 </header>
 
-  <section class="before-auth">
-  <form ID="sign-up">
+  <!-- <section class="before-auth"> -->
+  <!-- <form ID="sign-up">
     <h4>Sign Up</h4>
     <input type="email" name="credentials[email]" class="inputs" placeholder="email">
     <br />
@@ -52,8 +62,8 @@
     <input type="password" name="credentials[password_confirmation]" class="inputs" placeholder="password">
     <br />
     <button class="btn btn-info">Submit</button>
-  </form>
-  <hr>
+  </form> -->
+  <!-- <hr>
   <form ID="sign-in">
     <h4>Sign In</h4>
     <input type="email" name="credentials[email]" class="inputs" placeholder="email">
@@ -62,7 +72,67 @@
     <br />
     <button class="btn btn-info">Submit</button>
   </form>
-</section>
+</section> -->
+
+<div class="modal fade sign-up-modal" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signUpModal-header">Sign Up</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <br>
+      <div class="modal-body">
+        <form id="sign-up">
+          <div class="form-group">
+            <input type="email" class="form-control inputs" name="credentials[email]" placeholder="Your email" required>
+            <br>
+            <input type="password" class="form-control inputs" name="credentials[password]" placeholder="Password" required>
+            <br>
+            <input type="password" class="form-control" name="credentials[password_confirmation]" placeholder="Password confirmation" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-dark">Submit</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="modal fade sign-in-modal" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signInModal-header">Sign In</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <br>
+      <div class="modal-body">
+        <form id="sign-in">
+          <div class="form-group">
+            <input type="email" class="form-control inputs" name="credentials[email]" placeholder="Your email" required>
+            <br>
+            <input type="password" class="form-control inputs" name="credentials[password]" placeholder="Password" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-dark">Submit</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
 
 <section class="after-auth">
   <button id="get-questions" class="btn btn-dark">Get Surveys</button>
@@ -85,19 +155,19 @@
               <form id="questionModal-form">
                 <div class="form-group">
                   <p>Survey Title</p>
-                  <input type="text" class="form-control" id="title" name="question[title]" placeholder="title">
+                  <input type="text" class="form-control" id="title" name="question[title]" placeholder="title" required>
                   <br>
                   <p>Answer One</p>
-                  <input type="text" class="form-control" id="choice-1" name="question[choice1]" placeholder="example">
+                  <input type="text" class="form-control" id="choice-1" name="question[choice1]" placeholder="example" required>
                   <br>
                   <p>Answer Two</p>
-                  <input type="text" class="form-control" id="choice-2" name="question[choice2]" placeholder="example">
+                  <input type="text" class="form-control" id="choice-2" name="question[choice2]" placeholder="example" required>
                   <br>
                   <p>Answer Three</p>
-                  <input type="text" class="form-control" id="choice-3" name="question[choice3]" placeholder="example">
+                  <input type="text" class="form-control" id="choice-3" name="question[choice3]" placeholder="example" required>
                   <br>
                   <p>Answer Four</p>
-                  <input type="text" class="form-control" id="choice-4" name="question[choice4]" placeholder="example">
+                  <input type="text" class="form-control" id="choice-4" name="question[choice4]" placeholder="example" required>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
@@ -121,8 +191,8 @@
 <div id="result-message" class="question-box"></div>
   <section class='user-settings v'>
 <form id="change-password">
-<input type="text" name="passwords[old]" placeholder="Old Password">
-<input type="text" name="passwords[new]" placeholder="New Password">
+<input type="text" name="passwords[old]" placeholder="Old Password" required>
+<input type="text" name="passwords[new]" placeholder="New Password" required>
 <button class="btn btn-primary"> Update </button>
 </form>
 </section>

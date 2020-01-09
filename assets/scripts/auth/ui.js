@@ -22,6 +22,7 @@ const onFailure = message => {
 
 const onSignUpSuccess = () => {
   onSuccess('You successfully signed up. Now, sign in.')
+  $('#signUpModal').modal('hide')
 }
 
 const onSignUpFailure = () => {
@@ -34,6 +35,7 @@ const onSignInSuccess = responseData => {
   onSuccess('You successfully signed in.')
   $('.after-auth').show()
   $('.before-auth').hide()
+  $('#signInModal').modal('hide')
 }
 
 const onSignInFailure = () => {
