@@ -1,6 +1,6 @@
 const api = require('./api')
 const ui = require('./ui')
-const getFormFields = require('../../../lib/get-form-fields')
+// const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
 
 const onClickRead = event => {
@@ -15,13 +15,9 @@ const onGetRes = event => {
     .catch(ui.onGetQuestionsFailure)
 }
 
-const onDelNulRes = event => {
-
-}
 const addHandlers = event => {
   $('.question-box').on('click', '.see-results', onClickRead)
   $('.res-list').on('click', onGetRes)
-  $('.del-null-res').on('click', onDelNulRes)
 }
 
 module.exports = {

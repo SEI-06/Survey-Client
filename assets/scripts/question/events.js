@@ -61,7 +61,17 @@ const onDeleteQuestion = event => {
       onGetQuestions(event)
     })
     .then(() => {
-      return responseApi.deleteResponse()
+      responseApi.getResponses()
+        .then(data => {
+          const response = data.responses
+          // const responseId = []
+          // responseId += data.responses[i]._id
+          for (let i = 0; i < response.length; i++) {
+            if (!response[i].questionOwner) {
+              responseApi.deleteResponse(response[i]._id)
+            }
+          }
+        })
     })
     .catch(ui.onDeleteQuestionFailure)
 }
