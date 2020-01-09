@@ -60,6 +60,9 @@ const onDeleteQuestion = event => {
     .then(data => {
       onGetQuestions(event)
     })
+    .then(() => {
+      return responseApi.deleteResponse()
+    })
     .catch(ui.onDeleteQuestionFailure)
 }
 

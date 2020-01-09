@@ -1,6 +1,6 @@
 const store = require('../store')
 
-const onindexResultsSuccess = (data) => {
+const onIndexResultsSuccess = (data) => {
   const questionId = store.resultQuestionId
   const answerChoices = []
   let count1 = 0
@@ -44,6 +44,28 @@ const onindexResultsSuccess = (data) => {
   }
   console.log(count1, count2, count3, count4)
 }
+
+const onShowAllResSuccess = (data) => {
+  let html = ''
+  for (let i = 0; i < data.responses.length; i++) {
+    html += `
+    Response Id, ${data.responses[i]._id} </br>
+    Response user, ${data.responses[i].owner.email} </br>
+    User choice, ${data.responses[i].choice} </br>
+    `
+    if (!data.responses[i].questionOwner) {
+      html += `<div class='warning'> question data null</br> </div>`
+    } else {
+      html +=
+            `
+            <div class='good'> Question Id, ${data.responses[i].questionOwner._id} </br></div>
+            `
+    }
+  }
+  $('#result-message').html(html)
+}
+
 module.exports = {
-  onindexResultsSuccess
+  onIndexResultsSuccess,
+  onShowAllResSuccess
 }
