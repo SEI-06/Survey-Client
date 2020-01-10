@@ -40,16 +40,17 @@ const onGetQuestionsFailure = data => {
 }
 
 const onGetQuestionSuccess = data => {
+  const question = data.question
   $('#result-message').html(`
     <h6>Title:</h6>
-    ${data.question.title} </br>
+    ${question.title} </br>
     <h6>Choices:</h6>
-    ${data.question.choice1}</br>
-    ${data.question.choice2}</br>
-    ${data.question.choice3}</br>
-    ${data.question.choice4}</br>
+    ${question.choice1}</br>
+    ${question.choice2}</br>
+    ${question.choice3}</br>
+    ${question.choice4}</br>
     <h6>User:</h6>
-    ${data.question.owner.email}
+    ${question.owner.email}
   `)
   $('.user-settings').hide()
 }
@@ -82,7 +83,6 @@ const onSelectSurveySuccess = data => {
       <input type="radio" name="question[choice]" value="3"> ${data.question.choice3}</br>
       <input type="radio" name="question[choice]" value="4"> ${data.question.choice4}</br>
       <button class="survey-submit-btn"> submit </button>
-      <pre id="log"></pre>
       </form>
     `)
   $('.user-settings').hide()
