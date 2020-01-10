@@ -77,13 +77,19 @@ const onTakeSurveySuccess = data => {
 
 const onSelectSurveySuccess = data => {
   $('#result-message').html(`
-    <form>
 <div class="large-html">
       ${data.question.title} </br>
       </div>
-      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="1" checked> ${data.question.choice1}</button></br>
+      <form>
+      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="1"> ${data.question.choice1}</button></br>
+      </form>
+      <form>
       <button class="btn btn-info survey-submit-btn" name="question[choice]" value="2"> ${data.question.choice2}</button></br>
+      </form>
+      <form>
       <button class="btn btn-info survey-submit-btn" name="question[choice]" value="3"> ${data.question.choice3}</button></br>
+      </form>
+      <form>
       <button class="btn btn-info survey-submit-btn" name="question[choice]" value="4"> ${data.question.choice4}</button></br>
       </form>
     `)
