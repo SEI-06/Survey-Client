@@ -33,6 +33,7 @@ const onGetQuestionsSuccess = data => {
   $('#result-message').html(questionsHtml)
   $('#result-message').show()
   $('.user-settings').hide()
+  $('.update-question').hide()
 }
 
 const onGetQuestionsFailure = data => {
@@ -54,6 +55,7 @@ const onGetQuestionSuccess = data => {
     ${question.owner.email}
   `)
   $('.user-settings').hide()
+
 }
 
 const updateQuestionSuccess = data => {
@@ -106,7 +108,9 @@ const onSubmitSurveyFailure = () => {
 const getMySurveySuccess = data => {
   const mySurveyHtml = questionsTemplate2({ questions: data.questions })
   $('#result-message').html(mySurveyHtml)
+  $('#result-message').show()
   $('.user-settings').hide()
+  $('.update-question').hide()
 }
 
 const getMySurveyFailure = () => {

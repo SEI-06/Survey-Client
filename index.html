@@ -18,7 +18,9 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #A9B7C0;">
       <div class="container">
-        <a class="navbar-brand app-title"><img src="https://imgur.com/Vv3NNSC.png" class="logo" alt="logo"> Poll-ar Bear</a>
+        <a class="navbar-brand app-title">
+          <!-- <img src="https://imgur.com/Vv3NNSC.png" class="logo" alt="logo">  -->
+          Poll-ar Bear</a>
         <section class="before-auth">
           <ul class="nav justify-content-center">
             <li class="nav-item">
@@ -32,14 +34,14 @@
         <div class="navbar" id="navbarSupportedContent">
           <section class="after-auth">
             <ul class="navbar-nav ml-auto">
+              <a class="nav-link take-survey">Take Survey</a>
+              <a id="get-questions" class="nav-link">Get All Surveys</a>
+              <a class="nav-link my-survey">My Surveys</a>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Menu
+                  Account
                 </a>
                 <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item take-survey">Take Survey</a>
-                  <a class="dropdown-item my-survey">My Surveys</a>
-                  <div class="dropdown-divider"></div>
                   <a class="dropdown-item" id="show-account-options">Change Password</a>
                   <a class="dropdown-item" id="sign-out">Sign Out</a>
                 </div>
@@ -123,7 +125,6 @@
 
   <!-- MAIN PAGE --------------------------------------------------------->
   <section class="after-auth">
-    <button id="get-questions" class="btn btn-dark">Get All Surveys</button>
     <button type="button" class="btn btn-dark create-btn" data-toggle="modal" data-target="#questionModal">Create New Survey</button>
     <br>
     <div class="modal fade question-modal" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="questionModal" aria-hidden="true">

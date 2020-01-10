@@ -66,7 +66,6 @@ const onChangePasswordFailure = () => {
 }
 
 const onSignOutSuccess = () => {
-  $('.v').hide()
   onSuccess('You successfully signed out.')
   // below, the store no longer knows who we are. delete the token.
   store.user = {}
@@ -83,8 +82,8 @@ const onSignOutFailure = () => {
 }
 
 const accountOptionsSuccess = () => {
-  $('.v').hide()
-  $('.user-settings').show()
+  $('.user-settings').toggle()
+  $('.update-question').hide()
 }
 
 const accountOptionsFailure = () => {

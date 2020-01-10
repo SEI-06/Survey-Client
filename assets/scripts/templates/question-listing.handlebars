@@ -21,21 +21,11 @@
         <td>{{question.choice3}}</td>
         <td>{{question.choice4}}</td>
         <td>
-        <button data-id="{{question._id}}" data-toggle="modal" data-target="#addIngredientModal" class="btn btn-info see-results">
+        <button data-id="{{question._id}}" data-toggle="modal" title="see result" class="btn btn-info see-results">
           <svg id="i-clipboard" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                 <path d="M12 2 L12 6 20 6 20 2 12 2 Z M11 4 L6 4 6 30 26 30 26 4 21 4" />
               </svg>
             </button>
-        <button data-id="{{question._id}}" title="Edit" class="btn btn-info question-update-btn">
-          <svg id="i-edit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-              <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
-            </svg>
-        </button>
-        <button data-id="{{question._id}}" title="Delete" class="btn btn-danger question-delete-btn">
-          <svg id="i-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                  <path d="M2 30 L30 2 M30 30 L2 2" />
-              </svg>
-        </button>
       </td>
       </tr>
         <!-- <button data-id="{{question._id}}" title="Show" class="btn btn-info get-question-btn">

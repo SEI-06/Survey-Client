@@ -43,6 +43,7 @@ const onIndexResultsSuccess = (data) => {
     </div>
     `)
   }
+  $('.update-question').hide()
 }
 
 const onShowAllResSuccess = (data) => {

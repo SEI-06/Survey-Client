@@ -71,7 +71,7 @@ const onDeleteQuestion = event => {
       if (data.question.owner._id === store.user._id) {
         api.deleteQuestion(deleteQuestionId)
           .then(data => {
-            onGetQuestions(event)
+            onMySurvey(event)
           })
           .then(() => {
             responseApi.getResponses()
@@ -96,6 +96,7 @@ const onTakeSurvey = event => {
   api.getQuestions()
     .then(ui.onTakeSurveySuccess)
     .catch(ui.onTakeSurveyFailure)
+  $('.update-question').hide()
 }
 
 const onSelectSurvey = event => {
