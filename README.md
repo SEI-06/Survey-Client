@@ -1,4 +1,4 @@
-## TEAM NAME TBD: <br>Single Question Surveys
+## Poll-ar Bear: <br>Single Question Surveys
 This SPA is a survey application that can be used to create custom surveys. A user
 can perform basic authentication actions, such as sign in/sign up/change password/
 sign out. Once signed in, from the main view, the user can create a new survey,
@@ -15,7 +15,7 @@ viewable.
 
 [Try Poll-ar Bear Out!](https://sei-06.github.io/Survey-Client/)
 
-![image](Something)
+![Poll-ar Bear](https://i.imgur.com/7gtHcOm.png)
 
 #### Links to Back End
 [Back End Repo](https://github.com/SEI-06/Survey-API)
