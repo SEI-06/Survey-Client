@@ -4,7 +4,7 @@ const questionsTemplate = require('../templates/question-listing.handlebars')
 const questionsTemplate2 = require('../templates/question-listing2.handlebars')
 // const question-expand.handlebars
 const surveysTemplate = require('../templates/survey-listing.handlebars')
-const mySurveysTemplate = require('../templates/my-survey-listing.handlebars')
+// const mySurveysTemplate = require('../templates/my-survey-listing.handlebars')
 
 const onCreateQuestionSuccess = () => {
   $('#questionModal-header').text('Successfully Created A New Question!')

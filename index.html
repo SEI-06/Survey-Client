@@ -37,8 +37,7 @@
                   Menu
                 </a>
                 <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                  <a id="get-questions" class="dropdown-item">All Surveys</a>
-
+                  <a class="dropdown-item take-survey">Take Survey</a>
                   <a class="dropdown-item my-survey">My Surveys</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" id="show-account-options">Change Password</a>
@@ -124,7 +123,7 @@
 
   <!-- MAIN PAGE --------------------------------------------------------->
   <section class="after-auth">
-    <button class="btn btn-dark take-survey">Take Survey</button>
+    <button id="get-questions" class="btn btn-dark">Get All Surveys</button>
     <button type="button" class="btn btn-dark create-btn" data-toggle="modal" data-target="#questionModal">Create New Survey</button>
     <br>
     <div class="modal fade question-modal" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="questionModal" aria-hidden="true">
