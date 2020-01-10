@@ -9,6 +9,7 @@ const onIndexResultsSuccess = (data) => {
   let count4 = 0
   const choiceStr = []
   const response = data.responses
+  let questionTitle = ''
   for (let i = 0; i < response.length; i++) {
     if (response[i].questionOwner) {
       if (questionId === response[i].questionOwner._id) {
@@ -17,6 +18,7 @@ const onIndexResultsSuccess = (data) => {
         choiceStr.push(response[i].questionOwner.choice2)
         choiceStr.push(response[i].questionOwner.choice3)
         choiceStr.push(response[i].questionOwner.choice4)
+        questionTitle = response[i].questionOwner.title
       }
     }
   }
@@ -36,6 +38,7 @@ const onIndexResultsSuccess = (data) => {
       .fadeIn().fadeOut(3000)
   } else {
     $('#result-message').html(`
+    <div class='large-html'>Q.${questionTitle} </br></div>
     ${choiceStr[0]} = ${count1} </br>
     ${choiceStr[1]} = ${count2} </br>
     ${choiceStr[2]} = ${count3} </br>
