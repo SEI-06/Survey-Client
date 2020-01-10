@@ -63,3 +63,22 @@ Some of the more challenging aspects were writing the structure needed to get a 
 #### Wireframe
 
 ![SurveySPAWireframe](https://i.imgur.com/7ESgDl2.jpg)
+
+### Remaining Unsolved Problems
+
+In future iterations, we would:
+
+- Add an "options" resource so a user can control how many answers to their survey
+  they want available
+- Add a chart for results
+- Edit so "delete" and "update" are only available for surveys belonging to the
+  signed in user
+- Multi choice surveys
+- Edit the layout to make more user friendly
+
+
+
+
+1. All content is licensed under a CC­BY­NC­SA 4.0 license.
+1. All software code is licensed under GNU GPLv3. For commercial use or
+    alternative licensing, please contact legal@ga.co.
