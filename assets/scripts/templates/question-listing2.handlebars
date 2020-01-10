@@ -1,4 +1,5 @@
 <h3>My surveys</h3>
+
 <table class="table table-striped table-bordered table-sm survey-list" cellspacing="0" width="100%">
   <thead>
     <tr>
@@ -21,7 +22,7 @@
         <td>{{question.choice3}}</td>
         <td>{{question.choice4}}</td>
         <td>
-        <button data-id="{{question._id}}" class="btn btn-info see-results">
+        <button data-id="{{question._id}}" data-toggle="modal" data-target="#addIngredientModal" class="btn btn-info see-results">
           <svg id="i-clipboard" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                 <path d="M12 2 L12 6 20 6 20 2 12 2 Z M11 4 L6 4 6 30 26 30 26 4 21 4" />
               </svg>

@@ -86,3 +86,23 @@ tbody {
 a {
   cursor: pointer;
 }
+
+.logo {
+  border-radius: 10px;
+  border: 2px solid grey;
+}
+
+.th-title {
+  min-width: 400px;
+  max-width: 500px;
+}
+
+.th-choice {
+  min-width: 150px;
+}
+.td-title {
+  word-wrap: break-word;
+}
+.th-action {
+  min-width: 200px;
+}
