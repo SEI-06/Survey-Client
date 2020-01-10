@@ -95,7 +95,7 @@ const onSubmitSurveySuccess = data => {
   const surveyHtml = surveysTemplate({ questions: data.questions })
   $('#result-message').html(surveyHtml)
   $('.survey-action-message').html('Survey Submitted Successfully')
-    .fadeIn().fadeOut(1500)
+    .fadeIn().fadeOut(3000)
 }
 
 const onSubmitSurveyFailure = () => {

@@ -33,7 +33,7 @@ const onIndexResultsSuccess = (data) => {
   }
   if (!choiceStr[0]) {
     $('.warning-messages').html('No one answered yet')
-      .fadeIn().fadeOut(1500)
+      .fadeIn().fadeOut(3000)
   } else {
     $('#result-message').html(`
     ${choiceStr[0]} = ${count1} </br>
