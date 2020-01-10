@@ -19,9 +19,8 @@ body {
 
 .question-box {
   margin: 0 auto;
-  width: 400px;
+  // width: 400px;
   text-align: left;
-  width: 400px;
 }
 
 li {
@@ -43,9 +42,19 @@ li {
   color: white;
   width: 350px;
 }
+
+.submit-btn:hover {
+  background-color: blue;
+}
 .large-html {
   font-size: 50px;
 }
+// .survey-list {
+//   // max-width: 400px;
+//   overflow-wrap: break-word;
+//   word-wrap: break-word;
+//   hyphens: auto;
+// }
 
 .survey-submit-btn {
   box-shadow: .5px 1.5px 1.5px .5px black;
@@ -59,4 +68,17 @@ li {
 }
 #result-message {
   text-align: center;
+  // margin: 0 auto;
+}
+svg {
+  pointer-events: none;
+}
+
+tbody {
+ overflow:auto;
+ height: 150px;
+}
+.survey-list {
+  width: 800px;
+  margin: 0 auto;
 }

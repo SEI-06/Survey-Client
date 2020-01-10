@@ -38,6 +38,11 @@ const onShowUpdateQuestion = event => {
       (data) => {
         if (data.question.owner._id === store.user._id) {
           $('#update-question').show()
+          $('.qtitle').html(data.question.title)
+          $('.qchoice1').val(data.question.choice1)
+          $('.qchoice2').val(data.question.choice2)
+          $('.qchoice3').val(data.question.choice3)
+          $('.qchoice4').val(data.question.choice4)
         } else {
           $('.warning-messages').html('You cannot modify other user\'s survey')
             .fadeIn().fadeOut(1500)

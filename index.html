@@ -168,17 +168,18 @@
 
     <!-- UPDATE Q FORM --------------------------------------------------------->
     <form id="update-question" class="update-question">
-      <input name="question[title]" type="text" placeholder="question">
-      <input name="question[choice1]" type="text" placeholder="choice1">
-      <input name="question[choice2]" type="text" placeholder="choice2">
-      <input name="question[choice3]" type="text" placeholder="choice3">
-      <input name="question[choice4]" type="text" placeholder="choice4">
-      <button class="btn btn-dark">Update a Question</button>
+    </br>
+      <textarea name="question[title]" class="qtitle" placeholder="question"></textarea></br>
+      <input name="question[choice1]" class="qchoice1" type="text" placeholder="choice1"></br>
+      <input name="question[choice2]" class="qchoice2" type="text" placeholder="choice2"></br>
+      <input name="question[choice3]" class="qchoice3" type="text" placeholder="choice3"></br>
+      <input name="question[choice4]" class="qchoice4" type="text" placeholder="choice4"></br>
+      <button class="btn btn-dark submit-btn">Update a Question</button>
     </form>
     <!-- UPDATE Q FORM --------------------------------------------------------->
+    <div id="result-message" class="question-box"></div>
 
   </section>
-  <div id="result-message" class="question-box"></div>
 </body>
 
 </html>
