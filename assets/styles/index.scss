@@ -39,11 +39,23 @@ li {
 }
 
 .take-survey-btn:hover {
-  background-color: #4f6367;
   color: white;
   width: 350px;
 }
+.large-html {
+  font-size: 50px;
+}
 
+.survey-submit-btn {
+  box-shadow: .5px 1.5px 1.5px .5px black;
+  text-align: center;
+  transition: .25s;
+  border: 1px solid black;
+  background-color: white;
+  width: 300px;
+  color: black;
+  overflow: hidden;
+}
 #result-message {
   text-align: center;
 }

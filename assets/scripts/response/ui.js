@@ -40,6 +40,7 @@ const onIndexResultsSuccess = (data) => {
     ${choiceStr[1]} = ${count2} </br>
     ${choiceStr[2]} = ${count3} </br>
     ${choiceStr[3]} = ${count4} </br>
+    </div>
     `)
   }
 }

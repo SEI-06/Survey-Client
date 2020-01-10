@@ -75,14 +75,13 @@ const onTakeSurveySuccess = data => {
 const onSelectSurveySuccess = data => {
   $('#result-message').html(`
     <form>
-      <h6>Title:</h6>
+<div class="large-html">
       ${data.question.title} </br>
-      <h6>Choices:</h6>
-      <input type="radio" name="question[choice]" value="1" checked> ${data.question.choice1}</br>
-      <input type="radio" name="question[choice]" value="2"> ${data.question.choice2}</br>
-      <input type="radio" name="question[choice]" value="3"> ${data.question.choice3}</br>
-      <input type="radio" name="question[choice]" value="4"> ${data.question.choice4}</br>
-      <button class="survey-submit-btn"> submit </button>
+      </div>
+      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="1" checked> ${data.question.choice1}</button></br>
+      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="2"> ${data.question.choice2}</button></br>
+      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="3"> ${data.question.choice3}</button></br>
+      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="4"> ${data.question.choice4}</button></br>
       </form>
     `)
   $('.user-settings').hide()
