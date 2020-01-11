@@ -1,13 +1,9 @@
-<h3>All Surveys</h3>
+<h3>View Results</h3>
 <table class="table table-striped table-bordered table-sm survey-list" cellspacing="0" width="100%">
   <thead>
     <tr>
       <th class="th-sm th-title">Title</th>
-      <th class="th-sm th-choice">Choice 1</th>
-      <th class="th-sm th-choice">Choice 2</th>
-      <th class="th-sm th-choice">Choice 3</th>
-      <th class="th-sm th-choice">Choice 4</th>
-      <th class="th-sm th-action">Actions</th>
+      <th class="th-sm th-action"></th>
     </tr>
   </thead>
   <tbody>
@@ -16,10 +12,6 @@
   <section data-id="{{question._id}}">
     <tr>
         <td class="td-title">{{question.title}}</td>
-        <td>{{question.choice1}}</td>
-        <td>{{question.choice2}}</td>
-        <td>{{question.choice3}}</td>
-        <td>{{question.choice4}}</td>
         <td>
         <button data-id="{{question._id}}" data-toggle="modal" title="see result" class="btn btn-info see-results">
           <svg id="i-clipboard" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">

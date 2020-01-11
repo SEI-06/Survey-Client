@@ -95,6 +95,7 @@ body {
   font-size: 40px;
   color: #303436bb;
   pointer-events: none;
+  background-attachment: fixed;
 }
 .survey-submit-btn {
   box-shadow: .5px 1.5px 1.5px .5px black;
@@ -119,7 +120,7 @@ tbody {
  height: 150px;
 }
 .survey-list {
-  width: 800px;
+  width: 80%;
   margin: 0 auto;
 }
 
@@ -133,18 +134,17 @@ a {
 }
 
 .th-title {
-  min-width: 400px;
-  max-width: 500px;
+  min-width: 40%;
 }
 
 .th-choice {
-  min-width: 150px;
+  min-width: 20%;
 }
 .td-title {
   word-wrap: break-word;
 }
 .th-action {
-  min-width: 200px;
+  min-width: 20%;
 }
 
 @media(max-width: 1100px) {
@@ -168,7 +168,5 @@ a {
 }
 
 @media (min-width: 991px) {
-.navbar-expand-lg > .container {
-    flex-wrap: nowrap
-  }
+
 }
