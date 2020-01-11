@@ -1,11 +1,14 @@
+<div class="title-container">
 {{#each questions as |question|}}
-  <section data-id="{{question._id}}" class='take-survey-list'>
+  <div data-id="{{question._id}}" class='take-survey-list'>
 
       <!-- <h6> {{question.title}} </h6> -->
     </br>
-        <button data-id="{{question._id}}" title="{{question.title}}" class="btn btn-info take-survey-btn">
-          {{question.title}}
-        </button>
-  </section>
+        <div data-id="{{question._id}}" title="{{question.title}}" class="take-survey-btn">
+          <div class="title">
+            {{question.title}}
+          </div>
+        </div>
+  </div>
   {{/each}}
-<div class=survey-action-message></section>
+</div>

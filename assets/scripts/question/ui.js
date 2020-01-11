@@ -81,16 +81,16 @@ const onSelectSurveySuccess = data => {
       ${data.question.title} </br>
       </div>
       <form>
-      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="1"> ${data.question.choice1}</button></br>
+      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="1"><div class="choices">${data.question.choice1}</div></button></br>
       </form>
       <form>
-      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="2"> ${data.question.choice2}</button></br>
+      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="2"><div class="choices">${data.question.choice2}</div></button></br>
       </form>
       <form>
-      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="3"> ${data.question.choice3}</button></br>
+      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="3"><div class="choices">${data.question.choice3}</div></button></br>
       </form>
       <form>
-      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="4"> ${data.question.choice4}</button></br>
+      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="4"><div class="choices">${data.question.choice4}</div></button></br>
       </form>
     `)
   $('.user-settings').hide()
@@ -103,12 +103,12 @@ const onSelectSurveyFailure = () => {
 const onSubmitSurveySuccess = data => {
   const surveyHtml = surveysTemplate({ questions: data.questions })
   $('#result-message').html(surveyHtml)
-  $('.survey-action-message').html('Survey Submitted Successfully')
-    .fadeIn().fadeOut(3000)
+  $('.survey-action-message').html('Vote Submitted!')
+    .show().fadeOut(1000)
 }
 
 const onSubmitSurveyFailure = () => {
-  $('#result-message').text('Something went wrong')
+  $('#result-message').text('Failed Vote Submission')
 }
 
 const getMySurveySuccess = data => {
