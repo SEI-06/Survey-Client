@@ -62,7 +62,7 @@ const onIndexResultsSuccess = (data) => {
           data: {
               labels: ['${choiceStr[0]}', '${choiceStr[1]}', '${choiceStr[2]}', '${choiceStr[3]}'],
               datasets: [{
-                  label: '# of Votes',
+                  label: '# of votes',
                   data: [${count1}, ${count2}, ${count3}, ${count4}],
                   backgroundColor: [
                     '#0275d8',
@@ -78,7 +78,10 @@ const onIndexResultsSuccess = (data) => {
                   text:'${questionTitle}',
                   fontSize: 25
                 },
-                responsive: false
+                responsive: false,
+                legend: {
+                  display: false
+                }
               }
             })
 
