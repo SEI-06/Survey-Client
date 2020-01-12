@@ -11,9 +11,6 @@ const onCreateQuestion = event => {
   const form = event.target
   const formData = getFormFields(form)
   api.createQuestion(formData)
-    .then(data => {
-      onMySurvey(event)
-    })
     .then(ui.onCreateQuestionSuccess)
     .catch(ui.onCreateQuestionFailure)
 }

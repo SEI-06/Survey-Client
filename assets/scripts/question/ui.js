@@ -10,12 +10,10 @@ const onCreateQuestionSuccess = () => {
   $('#questionModal-header').text('Successfully Created A New Question!')
   $('#questionModal-header').css('background-color', 'green')
   $('#questionModal-form').get(0).reset()
-  setTimeout(() => {
-    $('#questionModal-header').text('Create New Survey')
-    $('#questionModal-header').css('background-color', 'white')
-  }, 3000)
   $('#questionModal').modal('hide')
   $('.user-settings').hide()
+  $('.survey-action-message').html('Created!')
+    .show().fadeOut(1000)
 }
 
 const onCreateQuestionFailure = () => {
@@ -41,22 +39,22 @@ const onGetQuestionsFailure = data => {
   console.error(data)
 }
 
-const onGetQuestionSuccess = data => {
-  const question = data.question
-  $('#result-message').html(`
-    <h6>Title:</h6>
-    ${question.title} </br>
-    <h6>Choices:</h6>
-    ${question.choice1}</br>
-    ${question.choice2}</br>
-    ${question.choice3}</br>
-    ${question.choice4}</br>
-    <h6>User:</h6>
-    ${question.owner.email}
-  `)
-  $('.user-settings').hide()
-
-}
+// const onGetQuestionSuccess = data => {
+//   const question = data.question
+//   $('#result-message').html(`
+//     <h6>Title:</h6>
+//     ${question.title} </br>
+//     <h6>Choices:</h6>
+//     ${question.choice1}</br>
+//     ${question.choice2}</br>
+//     ${question.choice3}</br>
+//     ${question.choice4}</br>
+//     <h6>User:</h6>
+//     ${question.owner.email}
+//   `)
+//   $('.user-settings').hide()
+//
+// }
 
 const updateQuestionSuccess = data => {
   // $('.update-delete').text('You successfuly updated one of your questions!')
@@ -136,7 +134,7 @@ module.exports = {
   onCreateQuestionFailure,
   onGetQuestionsSuccess,
   onGetQuestionsFailure,
-  onGetQuestionSuccess,
+  // onGetQuestionSuccess,
   updateQuestionSuccess,
   onTakeSurveySuccess,
   onSelectSurveySuccess,

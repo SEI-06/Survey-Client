@@ -146,7 +146,9 @@ a {
 .th-action {
   min-width: 20%;
 }
-
+#myChart {
+  margin: 0 auto;
+}
 @media(max-width: 1100px) {
   .title-container {
     grid-template-areas:
@@ -165,8 +167,4 @@ a {
   .title-container {
     display: inline-block;
   }
-}
-
-@media (min-width: 991px) {
-
 }

@@ -1,4 +1,5 @@
 const store = require('../store')
+const Chart = require('chart.js')
 
 const onIndexResultsSuccess = (data) => {
   const questionId = store.resultQuestionId
@@ -33,18 +34,57 @@ const onIndexResultsSuccess = (data) => {
       count4 += 1
     }
   }
+  // const ctx = $('#result-chart')[0].getContext('2d')
+  // console.log(ctx)
+  // const myChart = new Chart(ctx, {
+  //
+  //   type: 'bar',
+  //   data: {
+  //     labels: ['choiceStr', 'choiceStr', 'choiceStr', 'choiceStr'],
+  //     datasets: [{
+  //       label: 'votes',
+  //       data: [1, 10, 3, 4]
+  //     }]
+  //   }
+  // })
+
   if (!choiceStr[0]) {
     $('.warning-messages').html('No one answered yet')
       .fadeIn().fadeOut(3000)
   } else {
-    $('#result-message').html(`
-    <div class='large-html'>Q.${questionTitle} </br></div>
-    ${choiceStr[0]} = ${count1} </br>
-    ${choiceStr[1]} = ${count2} </br>
-    ${choiceStr[2]} = ${count3} </br>
-    ${choiceStr[3]} = ${count4} </br>
-    </div>
-    `)
+    const chart = `
+      <canvas id="myChart" max-width="400" height="400">
+      </canvas>
+      <script>
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var myChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+              labels: ['${choiceStr[0]}', '${choiceStr[1]}', '${choiceStr[2]}', '${choiceStr[3]}'],
+              datasets: [{
+                  label: '# of Votes',
+                  data: [${count1}, ${count2}, ${count3}, ${count4}],
+                  backgroundColor: [
+                    '#0275d8',
+                    '#5cb85c',
+                    '#5bc0de',
+                    '#f0ad4e'
+                  ]
+                }]
+              },
+              options:{
+                title: {
+                  display: true,
+                  text:'${questionTitle}',
+                  fontSize: 25
+                },
+                responsive: false
+              }
+            })
+
+    </script>
+    `
+    $('#result-message').html(chart)
   }
   $('.update-question').hide()
 }
