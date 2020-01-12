@@ -7,8 +7,6 @@ const surveysTemplate = require('../templates/survey-listing.handlebars')
 // const mySurveysTemplate = require('../templates/my-survey-listing.handlebars')
 
 const onCreateQuestionSuccess = () => {
-  $('#questionModal-header').text('Successfully Created A New Question!')
-  $('#questionModal-header').css('background-color', 'green')
   $('#questionModal-form').get(0).reset()
   $('#questionModal').modal('hide')
   $('.user-settings').hide()
