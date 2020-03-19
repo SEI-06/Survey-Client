@@ -5,6 +5,7 @@ const questionsTemplate2 = require('../templates/question-listing2.handlebars')
 // const question-expand.handlebars
 const surveysTemplate = require('../templates/survey-listing.handlebars')
 // const mySurveysTemplate = require('../templates/my-survey-listing.handlebars')
+const xss = require('xss')
 
 const onCreateQuestionSuccess = () => {
   $('#questionModal-form').get(0).reset()
@@ -26,6 +27,7 @@ const onCreateQuestionFailure = () => {
 
 const onGetQuestionsSuccess = data => {
   const questionsHtml = questionsTemplate({ questions: data.questions })
+
   $('#result-message').html(questionsHtml)
   $('#result-message').show()
   $('.user-settings').hide()
@@ -72,21 +74,28 @@ const onTakeSurveySuccess = data => {
 }
 
 const onSelectSurveySuccess = data => {
+  const cleanData = {
+    title: xss(data.question.title),
+    choice1: xss(data.question.choice1),
+    choice2: xss(data.question.choice2),
+    choice3: xss(data.question.choice3),
+    choice4: xss(data.question.choice4)
+  }
   $('#result-message').html(`
 <div class="large-html">
-      ${data.question.title} </br>
+      ${cleanData.title} </br>
       </div>
       <form>
-      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="1"><div class="choices">${data.question.choice1}</div></button></br>
+      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="1"><div class="choices">${cleanData.choice1}</div></button></br>
       </form>
       <form>
-      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="2"><div class="choices">${data.question.choice2}</div></button></br>
+      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="2"><div class="choices">${cleanData.choice2}</div></button></br>
       </form>
       <form>
-      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="3"><div class="choices">${data.question.choice3}</div></button></br>
+      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="3"><div class="choices">${cleanData.choice3}</div></button></br>
       </form>
       <form>
-      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="4"><div class="choices">${data.question.choice4}</div></button></br>
+      <button class="btn btn-info survey-submit-btn" name="question[choice]" value="4"><div class="choices">${cleanData.choice4}</div></button></br>
       </form>
     `)
   $('.user-settings').hide()
