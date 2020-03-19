@@ -5,6 +5,7 @@ const ui = require('./ui')
 const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
 const responseApi = require('../response/api')
+const xss = require('xss')
 
 const onCreateQuestion = event => {
   event.preventDefault()
@@ -36,13 +37,20 @@ const onShowUpdateQuestion = event => {
   api.getOneQuestion(updateQuestionId)
     .then(
       (data) => {
+        const cleanData = {
+          title: xss(data.question.title),
+          choice1: xss(data.question.choice1),
+          choice2: xss(data.question.choice2),
+          choice3: xss(data.question.choice3),
+          choice4: xss(data.question.choice4)
+        }
         if (data.question.owner._id === store.user._id) {
           $('#update-question').show()
-          $('.qtitle').html(data.question.title)
-          $('.qchoice1').val(data.question.choice1)
-          $('.qchoice2').val(data.question.choice2)
-          $('.qchoice3').val(data.question.choice3)
-          $('.qchoice4').val(data.question.choice4)
+          $('.qtitle').html(cleanData.title)
+          $('.qchoice1').val(cleanData.choice1)
+          $('.qchoice2').val(cleanData.choice2)
+          $('.qchoice3').val(cleanData.choice3)
+          $('.qchoice4').val(cleanData.choice4)
         } else {
           $('.warning-messages').html('You cannot modify other user\'s survey')
             .fadeIn().fadeOut(1500)
