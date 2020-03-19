@@ -9,12 +9,6 @@ const onClickRead = event => {
     .then(ui.onIndexResultsSuccess)
 }
 
-// const onGetRes = event => {
-//   api.getResponses()
-//     .then(ui.onShowAllResSuccess)
-//     .catch(ui.onGetQuestionsFailure)
-// }
-
 const addHandlers = event => {
   $('.question-box').on('click', '.see-results', onClickRead)
   // $('.res-list').on('click', onGetRes)

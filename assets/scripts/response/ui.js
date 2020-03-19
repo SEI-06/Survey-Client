@@ -1,5 +1,6 @@
 const store = require('../store')
-const Chart = require('chart.js')
+
+const xss = require('xss')
 
 const onIndexResultsSuccess = (data) => {
   const questionId = store.resultQuestionId
@@ -60,7 +61,7 @@ const onIndexResultsSuccess = (data) => {
       var myChart = new Chart(ctx, {
           type: 'bar',
           data: {
-              labels: ['${choiceStr[0]}', '${choiceStr[1]}', '${choiceStr[2]}', '${choiceStr[3]}'],
+              labels: ['${xss(choiceStr[0])}', '${xss(choiceStr[1])}', '${xss(choiceStr[2])}', '${xss(choiceStr[3])}'],
               datasets: [{
                   label: '# of votes',
                   data: [${count1}, ${count2}, ${count3}, ${count4}],
@@ -75,7 +76,7 @@ const onIndexResultsSuccess = (data) => {
               options:{
                 title: {
                   display: true,
-                  text:'${questionTitle}',
+                  text:'${xss(questionTitle)}',
                   fontSize: 25
                 },
                 responsive: false,
@@ -92,27 +93,6 @@ const onIndexResultsSuccess = (data) => {
   $('.update-question').hide()
 }
 
-const onShowAllResSuccess = (data) => {
-  let html = ''
-  for (let i = 0; i < data.responses.length; i++) {
-    html += `
-    Response Id, ${data.responses[i]._id} </br>
-    Response user, ${data.responses[i].owner.email} </br>
-    User choice, ${data.responses[i].choice} </br>
-    `
-    if (!data.responses[i].questionOwner) {
-      html += `<div class='warning'> question data null</br> </div>`
-    } else {
-      html +=
-            `
-            <div class='good'> Question Id, ${data.responses[i].questionOwner._id} </br></div>
-            `
-    }
-  }
-  $('#result-message').html(html)
-}
-
 module.exports = {
-  onIndexResultsSuccess,
-  onShowAllResSuccess
+  onIndexResultsSuccess
 }
