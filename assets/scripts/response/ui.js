@@ -59,7 +59,7 @@ const onIndexResultsSuccess = (data) => {
       <script>
       var ctx = document.getElementById('myChart').getContext('2d');
       var myChart = new Chart(ctx, {
-          type: 'bar',
+          type: 'pie',
           data: {
               labels: ['${xss(choiceStr[0])}', '${xss(choiceStr[1])}', '${xss(choiceStr[2])}', '${xss(choiceStr[3])}'],
               datasets: [{
@@ -81,7 +81,7 @@ const onIndexResultsSuccess = (data) => {
                 },
                 responsive: false,
                 legend: {
-                  display: false
+                  display: true
                 }
               }
             })
