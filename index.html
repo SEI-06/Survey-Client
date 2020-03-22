@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Poll-ar Bear</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="path/to/chartjs/dist/Chart.min.css">
+  <!-- Do not add `script` tags-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #A9B7C0">
+      <div class="container">
+        <a class="navbar-brand app-title">
+          <img src="https://imgur.com/Vv3NNSC.png" class="logo" alt="logo">
+          Poll-ar Bear</a>
+        <section class="before-auth">
+          <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <button class="nav-button btn btn-light" data-toggle="modal" data-target="#signUpModal">Sign Up</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-button btn btn-light" data-toggle="modal" data-target="#signInModal">Sign In</button>
+            </li>
+          </ul>
+        </section>
+        <div class="navbar" id="navbarSupportedContent">
+          <section class="after-auth">
+            <ul class="navbar-nav ml-auto">
+              <a class="nav-link take-survey">Take Survey</a>
+              <a id="get-questions" class="nav-link">View Results</a>
+              <a class="nav-link my-survey">My Surveys</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Account
+                </a>
+                <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" id="show-account-options">Change Password</a>
+                  <a class="dropdown-item" id="sign-out">Sign Out</a>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- MODAL --------------------------------------------------------->
+  <div class="modal fade sign-up-modal" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="signUpModal-header">Sign Up</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <br>
+        <div class="modal-body">
+          <form id="sign-up">
+            <div class="form-group">
+              <input type="email" class="form-control inputs" name="credentials[email]" placeholder="Your email" required>
+              <br>
+              <input type="password" class="form-control inputs" name="credentials[password]" placeholder="Password" required>
+              <br>
+              <input type="password" class="form-control" name="credentials[password_confirmation]" placeholder="Password confirmation" required>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-dark">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade sign-in-modal" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="signInModal-header">Sign In</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <br>
+        <div class="modal-body">
+          <form id="sign-in">
+            <div class="form-group">
+              <input type="email" class="form-control inputs" name="credentials[email]" placeholder="Your email" required>
+              <br>
+              <input type="password" class="form-control inputs" name="credentials[password]" placeholder="Password" required>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-dark">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- MODAL --------------------------------------------------------->
+
+  <!-- USER-SETTINGS --------------------------------------------------------->
+  <section class='user-settings v'>
+    <form id="change-password">
+      <input type="password" name="passwords[old]" placeholder="Old Password" required>
+      <br>
+      <input type="password" name="passwords[new]" placeholder="New Password" required>
+      <br>
+      <button class="btn btn-info"> Update </button>
+    </form>
+  </section>
+  <!-- END USER-SETTINGS --------------------------------------------------------->
+
+  <!-- MAIN PAGE --------------------------------------------------------->
+  <section class="after-auth">
+    <button type="button" class="btn btn-dark create-btn" data-toggle="modal" data-target="#questionModal">New Survey</button>
+    <br>
+    <div class="modal fade question-modal" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="questionModal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="questionModal-header">Create New Survey</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <br>
+          <div class="modal-body">
+            <form id="questionModal-form">
+              <div class="form-group">
+                <p>Survey Title</p>
+                <input type="text" class="form-control" id="title" name="question[title]" placeholder="title" required>
+                <br>
+                <p>Answer One</p>
+                <input type="text" class="form-control" id="choice-1" name="question[choice1]" placeholder="example" required>
+                <br>
+                <p>Answer Two</p>
+                <input type="text" class="form-control" id="choice-2" name="question[choice2]" placeholder="example" required>
+                <br>
+                <p>Answer Three</p>
+                <input type="text" class="form-control" id="choice-3" name="question[choice3]" placeholder="example" required>
+                <br>
+                <p>Answer Four</p>
+                <input type="text" class="form-control" id="choice-4" name="question[choice4]" placeholder="example" required>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-dark">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MAIN PAGE --------------------------------------------------------->
+
+    <!-- UPDATE Q FORM --------------------------------------------------------->
+    <form id="update-question" class="update-question">
+    </br>
+    <h3>Title</h3>
+      <textarea name="question[title]" class="qtitle" placeholder="question"></textarea></br>
+      <h3>Choices</h3>
+      <input name="question[choice1]" class="qchoice1" type="text" placeholder="choice1"></br>
+      <input name="question[choice2]" class="qchoice2" type="text" placeholder="choice2"></br>
+      <input name="question[choice3]" class="qchoice3" type="text" placeholder="choice3"></br>
+      <input name="question[choice4]" class="qchoice4" type="text" placeholder="choice4"></br>
+      <button class="btn btn-dark submit-btn">Update a Question</button>
+    </form>
+    <!-- UPDATE Q FORM --------------------------------------------------------->
+    <div id="result-message" class="question-box"></div>
+  </section>
+  <div id="user-message"class="warning-messages survey-action-message"></div>
+  <!-- <div id='user-message'> </div>
+  <div class="warning-messages"></div> -->
+</body>
+</html>
