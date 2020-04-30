@@ -10,7 +10,7 @@
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.1.2",
     "chart.js": "^2.9.3",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "nodemon": "^2.0.2",
     "popper.js": "^1.14.3",
     "xss": "^1.0.6"
